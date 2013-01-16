@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :login, :username, :first_name, :last_name, :title
+  attr_accessible :login, :username, :first_name, :last_name, :title, :is_admin
 
   def self.find_first_by_auth_conditions(warden_conditions)
     # puts '='*40
