@@ -37,4 +37,7 @@ Game::Application.configure do
 
   # Added devise config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Paper clip
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

@@ -11,3 +11,5 @@ gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "bootstrap-sass", ">= 2.0.4.0"
 gem 'devise'
+gem "paperclip"
+gem "cocaine", "~> 0.3.2"
