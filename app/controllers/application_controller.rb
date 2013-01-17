@@ -4,14 +4,18 @@ class ApplicationController < ActionController::Base
 
 	def after_sign_in_path_for(resource)
 		if current_user.is_admin?
-			"/users"
+			users_path
 		else
-			"/users/#{current_user.id}"
+			profile_path
 		end 
 	end
 
 	def after_sign_up_path_for(resource)
-		
+		if current_user.is_admin?
+			users_path
+		else
+			profile_path
+		end
 	end
 
 	protected

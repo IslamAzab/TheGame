@@ -1,0 +1,15 @@
+%h4
+  = @user.first_name.to_s + "\'s Profile !"
+%p
+  %b First name:
+  = @user.first_name
+%p
+  %b Last name:
+  = @user.last_name
+%p
+  %b Title:
+  = @user.title
+
+= link_to 'Edit', profile_edit_path
+\|
+= link_to 'Back', users_path

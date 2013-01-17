@@ -1,0 +1,2 @@
+module ProfilesControllerHelper
+end
