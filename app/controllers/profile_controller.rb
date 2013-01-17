@@ -4,26 +4,25 @@ class ProfileController < ApplicationController
   # GET /profile
   def profile
     @user = current_user
-
-    respond_to do |format|
-      format.html # profile.html.haml
-    end
   end
 
   # GET /profile/edit
   def edit
     @user = current_user
+  end
 
+  # PUT /profile/edit
+  def update
+    @user = current_user
+    @user.update_attributes(params[:user])
     respond_to do |format|
-      format.html # profile.html.haml
+      format.html { redirect_to profile_path}
     end
   end
 
   # GET /profile/:id
   def show
     @user = User.find(params[:id])
-    respond_to do |format|
-      format.html # profile.html.haml
-    end
   end
+
 end

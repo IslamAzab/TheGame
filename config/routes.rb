@@ -2,15 +2,17 @@ Game::Application.routes.draw do
     
   get "profile" => "profile#profile"
   
-  # get "profile/edit" = > "profile#edit"
+  # get "profile/edit" => "profile#edit"
   get "profile/edit"
+
+  put "profile/edit" => "profile#update", :as => :update_profile
 
   get "profile/:id" => "profile#show"
   # get "profile/show"
 
   # resources :users
 
-  devise_for :users, :controllers => {:sessions => "sessions"}
+  devise_for :users, :controllers => {:sessions => "sessions"}, :path => 'accounts'
 
   resources :users
 

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 	protected
 	
 		def authorize
-			unless current_user.is_admin
+			unless current_user.is_admin?
 				redirect_to root_url , :notice => "You are not an admin !"
 			end
 		end
