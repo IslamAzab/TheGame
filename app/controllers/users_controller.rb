@@ -59,6 +59,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+    if params[:user][:password].blank?
+      params[:user].delete("password")
+      params[:user].delete("password_confirmation")
+    end
+
+    @user.coach_id = params[:user][:coach_id]
+    params[:user].delete("coach_id")
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
