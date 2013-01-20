@@ -12,15 +12,11 @@
 %p
   %b Title:
   = @user.title
-%p
-  %b Coach name:
-  = @user.coach.first_name + " " + @user.coach.last_name if @user.coach
-  / - if @user.coach_id
-  /   - coach = User.find(@user.coach_id)
-  /   = coach.first_name + " " + coach.last_name
+- if @user.coach
+  %p
+    %b Coach name:
+    = @user.coach_name
 
-/ - players = User.where(:coach_id => @user.id)
-/ - players = @user.players
 = render 'players'
 
 

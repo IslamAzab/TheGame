@@ -28,11 +28,6 @@
     = f.text_field :title
   .field
     = f.label :coach_id
-    = f.collection_select :coach_id, User.all, :id, :first_name, :prompt => true 
-    / - users_names = []
-    / - User.all.each do |u|
-    /   - users_names << [u.username,u.id]
-    / - users_names.sort!
-    / = f.select :coach_id, options_for_select(users_names)
+    = f.collection_select :coach_id, User.all, :id, :full_name , :prompt => true 
   .actions
     = f.submit 'Save', :class => "btn btn-primary"

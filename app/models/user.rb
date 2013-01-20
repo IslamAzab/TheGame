@@ -9,25 +9,26 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :login, :username, :first_name, :last_name, :title, :coach_id
+  attr_accessible :login, :username, :first_name, :last_name, :title
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   # Validation
-  validates :username, :presence => true, :uniqueness => true
+  validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
+  validates :first_name, :presence => true
 
   # Coach has many players
-  belongs_to :coach, :foreign_key => :coach_id, :class_name => "User"
+  belongs_to :coach, :class_name => "User"
   has_many :players, :foreign_key => :coach_id, :class_name => "User"
 
-  # def coach
-  #   User.find(self.coach_id) if self.coach_id
-  # end
+  def coach_name
+    self.coach.first_name + " " + self.coach.last_name if self.coach    
+  end
 
-  # def players
-    
-  # end
+  def full_name
+    self.first_name + " " + self.last_name    
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

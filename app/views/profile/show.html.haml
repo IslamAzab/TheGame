@@ -11,9 +11,11 @@
 %p
   %b Title:
   = @user.title
-%p
-  %b Coach name:
-  = @user.coach.first_name if @user.coach
+
+- if @user.coach
+  %p
+    %b Coach name:
+    = @user.coach_name
 
 - if @user.players.any?
   %p

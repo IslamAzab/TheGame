@@ -2,8 +2,7 @@
 
 %table.table-striped
   %tr
-    %th First name
-    %th Last name
+    %th Name
     %th Title
     %th Coach name
     %th
@@ -12,12 +11,10 @@
 
   - @users.each do |user|
     %tr
-      %td= user.first_name
-      %td= user.last_name
+      %td= user.full_name
       %td= user.title
-      - if user.coach_id
-      - coach = User.find(user.coach_id) 
-        %td= coach.first_name + " " + coach.last_name
+      - if user.coach
+        %td= user.coach_name
       - else
         %td
       %td= link_to 'Show', user, :class => "btn btn-link"
