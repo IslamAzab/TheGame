@@ -7,7 +7,7 @@ Game::Application.routes.draw do
 
   put "profile/edit" => "profile#update", :as => :update_profile
 
-  get "profile/:id" => "profile#show"
+  get "profile/:id" => "profile#show", :as => :show_other_profile
   # get "profile/show"
 
   # resources :users

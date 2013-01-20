@@ -14,10 +14,10 @@ class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  # Validation
+  validates :username, :presence => true, :uniqueness => true
+
   def self.find_first_by_auth_conditions(warden_conditions)
-    # puts '='*40
-    # puts "looking for login => #{:login}"
-    # puts '='*40
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
       where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
