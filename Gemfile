@@ -13,3 +13,6 @@ gem "bootstrap-sass", ">= 2.0.4.0"
 gem 'devise'
 gem "paperclip"
 gem "cocaine", "~> 0.3.2"
+# For rake task to convert devise erbs to hamls
+gem 'hpricot'
+gem 'ruby_parser' 

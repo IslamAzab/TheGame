@@ -1,6 +1,6 @@
 %h1 Listing users
 
-%table
+%table.table-striped
   %tr
     %th First name
     %th Last name
@@ -20,10 +20,10 @@
         %td= coach.first_name + " " + coach.last_name
       - else
         %td
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Show', user, :class => "btn btn-link"
+      %td= link_to 'Edit', edit_user_path(user), :class => "btn btn-link"
+      %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-link"
 
 %br
 
-= link_to 'New User', new_user_path
+= link_to 'New User', new_user_path, :class => "btn btn-link"

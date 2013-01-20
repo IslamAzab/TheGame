@@ -21,8 +21,8 @@
     = render 'users/players'
 
 -if @user.id == current_user.id
-  = link_to 'Edit', profile_edit_path
+  = link_to 'Edit', profile_edit_path, :class => "btn btn-link"
   \|
-  = link_to 'Back', profile_path
+  = link_to 'Back', profile_path, :class => "btn btn-link"
 -else
-  = link_to 'Back', profile_path
+  = link_to 'Back', profile_path, :class => "btn btn-link"

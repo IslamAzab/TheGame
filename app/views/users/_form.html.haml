@@ -12,6 +12,12 @@
     = f.label :email
     = f.email_field :email
   .field
+    = f.label :password
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  .field
     = f.label :first_name
     = f.text_field :first_name
   .field
@@ -29,4 +35,4 @@
     / - users_names.sort!
     / = f.select :coach_id, options_for_select(users_names)
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn btn-primary"
