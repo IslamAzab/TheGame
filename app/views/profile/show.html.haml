@@ -1,5 +1,4 @@
 %h1 Profile#show
-%p Find me in app/views/profile/show.html.haml
 
 %h4
   = @user.first_name.to_s + "\'s Profile !"
@@ -12,6 +11,15 @@
 %p
   %b Title:
   = @user.title
+%p
+  %b Coach name:
+  = @user.coach.first_name if @user.coach
+
+- if @user.players.any?
+  %p
+    %b Players:
+    = render 'users/players'
+
 -if @user.id == current_user.id
   = link_to 'Edit', profile_edit_path
   \|

@@ -1,3 +1,20 @@
+- if players.any?
+  %p
+    Number of players:
+    = players.count
+  %table
+    %tr
+      %th First name
+      %th Last name
+      %th Title
+      - players.each do |p|
+        %tr
+          %td= p.first_name
+          %td= p.last_name
+          %td= p.title 
+
+
+
 = button_to "Logout", destroy_user_session_path, :class =>'btn btn-primary pull-right', :method => :delete
 
 .btn-group.pull-right

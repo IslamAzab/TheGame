@@ -1,6 +1,9 @@
 / %p#notice= notice
 
 %p
+  %b User name:
+  = @user.username
+%p
   %b First name:
   = @user.first_name
 %p
@@ -9,6 +12,17 @@
 %p
   %b Title:
   = @user.title
+%p
+  %b Coach name:
+  = @user.coach.first_name + " " + @user.coach.last_name if @user.coach
+  / - if @user.coach_id
+  /   - coach = User.find(@user.coach_id)
+  /   = coach.first_name + " " + coach.last_name
+
+/ - players = User.where(:coach_id => @user.id)
+/ - players = @user.players
+= render 'players'
+
 
 = link_to 'Edit', edit_user_path(@user)
 \|

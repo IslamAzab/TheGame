@@ -9,5 +9,14 @@
 %p
   %b Title:
   = @user.title
+%p
+  %b Coach name:
+  / = User.find(@user.coach_id).first_name if @user.coach_id
+  = @user.coach.first_name if @user.coach
+
+- if @user.players.any?
+  %p
+    %b Players:
+    = render 'users/players'
 
 = link_to 'Edit', profile_edit_path

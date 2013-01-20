@@ -14,9 +14,15 @@ class ProfileController < ApplicationController
   # PUT /profile/edit
   def update
     @user = current_user
-    @user.update_attributes(params[:user])
+    # This line to ensure that the user can not edit his coach
+    params[:coach_id] = current_user.coach_id
+    
     respond_to do |format|
-      format.html { redirect_to profile_path}
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to profile_path }
+      else
+        format.html { render action: "edit" }
+      end
     end
   end
 
