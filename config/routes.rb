@@ -1,4 +1,6 @@
 Game::Application.routes.draw do
+
+  get "team" => "team#index", :as => :team
     
   get "profile" => "profile#profile"
   
@@ -10,8 +12,6 @@ Game::Application.routes.draw do
   # get "profile/show"
   get "profile/:id" => "profile#show", :as => :show_other_profile
   
-  # resources :users
-
   devise_for :users, :controllers => {:sessions => "sessions"}, :path => 'accounts'
 
   resources :users
