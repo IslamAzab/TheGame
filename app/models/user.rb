@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :login, :username, :first_name, :last_name, :title
+  attr_accessible :login, :username, :first_name, :last_name, :title, :scoring_cards_attributes
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   # Player has many scoring_cards
   has_many :scoring_cards
+  accepts_nested_attributes_for :scoring_cards, :reject_if => lambda { |attributes| attributes[:title].blank? }, :allow_destroy => true
 
   def coach_name
     self.coach.first_name + " " + self.coach.last_name if self.coach    
