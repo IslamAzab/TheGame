@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
   # PUT /profile/edit
   def update
     @user = current_user
-    # required for settings form to submit when password is left blank
+
     if params[:user][:password].blank?
       params[:user].delete("password")
       params[:user].delete("password_confirmation")
@@ -24,7 +24,6 @@ class ProfileController < ApplicationController
       if @user.update_attributes(params[:user])
         format.html { redirect_to profile_path }
       else
-        puts "$" *30
         format.html { render action: "edit" }
       end
     end
