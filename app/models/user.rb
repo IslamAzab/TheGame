@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
   belongs_to :coach, :class_name => "User"
   has_many :players, :foreign_key => :coach_id, :class_name => "User"
 
+  # Player has many scoring_cards
+  has_many :scoring_cards
+
   def coach_name
     self.coach.first_name + " " + self.coach.last_name if self.coach    
   end
