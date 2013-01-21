@@ -1,13 +1,15 @@
 Game::Application.routes.draw do
 
   get "team" => "team#index", :as => :team
+
+  get "team/:id/scoring_cards" => "team#scoring_cards"
     
   get "profile" => "profile#profile"
   
   # get "profile/edit" => "profile#edit"
   get "profile/edit"
 
-  put "profile/edit" => "profile#update", :as => :update_profile
+  put "profile" => "profile#update", :as => :update_profile
 
   # get "profile/show"
   get "profile/:id" => "profile#show", :as => :show_other_profile

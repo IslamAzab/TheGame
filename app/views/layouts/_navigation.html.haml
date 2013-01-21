@@ -14,6 +14,13 @@
         - unless current_user.players.blank?
           %li          
             = link_to 'Team', team_path
+          / %li.dropdown-submenu
+          /   %a{:href => "#"} Team options
+          /   %ul.dropdown-menu
+          /     %li
+          /       %a{:href => "#"} Second level link
+          /     %li
+          /       %a{:href => "#"} Second level link
         %li.divider
         %li
           = link_to 'Logout', destroy_user_session_path, :method => :delete

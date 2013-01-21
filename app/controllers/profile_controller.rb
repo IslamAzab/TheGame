@@ -11,7 +11,7 @@ class ProfileController < ApplicationController
     @user = current_user
   end
 
-  # PUT /profile/edit
+  # PUT /profile
   def update
     @user = current_user
 
