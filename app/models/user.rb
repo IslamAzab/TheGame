@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :login, :username, :first_name, :last_name, :title, :scoring_cards_attributes
+  attr_accessible :login, :username, :first_name, :last_name, :title
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
