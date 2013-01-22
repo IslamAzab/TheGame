@@ -41,7 +41,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new
+
+    @user.coach_id = params[:user][:coach_id]
+    params[:user].delete("coach_id")
+
+    @user.update_attributes(params[:user])
 
     respond_to do |format|
       if @user.save

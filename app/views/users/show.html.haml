@@ -16,8 +16,8 @@
   %p
     %b Coach name:
     = @user.coach_name
-
-= render 'players'
+- if @user.players.any?
+  = render 'players'
 
 
 = link_to 'Edit', edit_user_path(@user), :class => "btn btn-link"

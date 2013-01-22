@@ -2,4 +2,6 @@
   Players coached by
   = @user.full_name
 - if @user.players.any?
-  = render 'users/players'
+  %p
+    %b Players:
+    = render 'users/players'

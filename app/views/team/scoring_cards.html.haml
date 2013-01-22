@@ -4,14 +4,14 @@
 
 - if @user.scoring_cards.any?
   = form_for @user, :url => :update_player_scoring_cards, :method => :put do |f|
-    %table.table-striped
+    %table
       %tr
         %th Title
         %th Score
         %th Active?
         %th Remove?
       = f.fields_for :scoring_cards do |builder|
-        %tr
-          = render 'score_cards', :f => builder
+        = render 'score_cards', :f => builder
+    = link_to_add_fields 'Add Scoring Card', f, :scoring_cards, "score_cards"
     .actions
       = f.submit 'Save', :class => "btn btn-primary"
