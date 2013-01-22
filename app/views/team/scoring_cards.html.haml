@@ -2,16 +2,16 @@
   Show of scoring cards for player : 
   = @user.full_name
 
-- if @user.scoring_cards.any?
-  = form_for @user, :url => :update_player_scoring_cards, :method => :put do |f|
-    %table
-      %tr
-        %th Title
-        %th Score
-        %th Active?
-        %th Remove?
-      = f.fields_for :scoring_cards do |builder|
-        = render 'score_cards', :f => builder
-    = link_to_add_fields 'Add Scoring Card', f, :scoring_cards, "score_cards"
-    .actions
-      = f.submit 'Save', :class => "btn btn-primary"
+
+= form_for @user, :url => :update_player_scoring_cards, :method => :put do |f|
+  = link_to_add_fields 'Add Scoring Card', f, :scoring_cards, "score_cards"
+  %table{:style => "#{'display: none' if @user.scoring_cards.blank?}"}
+    %tr
+      %th Title
+      %th Score
+      %th Active?
+      %th Remove?
+    = f.fields_for :scoring_cards do |builder|
+      = render 'score_cards', :f => builder
+  .actions
+    = f.submit 'Save', :class => "btn btn-primary", :style => "#{'display: none' if @user.scoring_cards.count == 0}"

@@ -19,5 +19,6 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   // $(link).parent().before(content.replace(regexp, new_id));
-  $(link).siblings("table").children("tbody").append(content);
+  $('[style = "display: none"]').show();
+  $(link).siblings("table").children("tbody").append(content.replace(regexp, new_id));
 }
