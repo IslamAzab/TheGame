@@ -6,4 +6,5 @@
   %td
     = f.check_box :active
   %td
-    = f.check_box :_destroy
+    = f.hidden_field :_destroy
+    = link_to_function "remove", "remove_fields(this)"
