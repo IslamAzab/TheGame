@@ -2,6 +2,7 @@
 
 %table.table-striped
   %tr
+    %th Image
     %th Name
     %th Title
     %th Coach name
@@ -11,6 +12,8 @@
 
   - @users.each do |user|
     %tr
+      %td
+        = image_tag user.avatar.url(:thumb) 
       %td= user.full_name
       %td= user.title
       - if user.coach
