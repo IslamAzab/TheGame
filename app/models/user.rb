@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   # Player has many scoring_cards
   has_many :scoring_cards
-  accepts_nested_attributes_for :scoring_cards, :reject_if => lambda { |attributes| attributes[:title].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :scoring_cards, :allow_destroy => true
 
   def coach_name
     self.coach.first_name + " " + self.coach.last_name if self.coach    

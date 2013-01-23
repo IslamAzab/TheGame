@@ -6,5 +6,5 @@ class ScoringCard < ActiveRecord::Base
 
   # Validation
   validates :score, :presence => true, :numericality => true
-  
+  validates :title, :presence => true
 end
