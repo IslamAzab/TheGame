@@ -3,7 +3,7 @@
   %ul.nav.pull-right
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown"}
-        = current_user.username
+        = current_user.full_name
         %b.caret
       %ul.dropdown-menu
         %li
@@ -25,5 +25,7 @@
         %li
           = link_to 'Logout', destroy_user_session_path, :method => :delete
     %li.divider
+    %li
+      = image_tag current_user.avatar.url(:thumb)
     %li
       = link_to 'Logout', destroy_user_session_path, :method => :delete
