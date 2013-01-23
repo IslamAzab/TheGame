@@ -15,13 +15,15 @@ class TeamController < ApplicationController
   def update_player_scoring_cards
     @user = current_user.players.find(params[:id])
     @user.scoring_cards_attributes = params[:user][:scoring_cards_attributes]
-
+    @resource = @user
     respond_to do |format|
       if @user.save
         format.html { render 'scoring_cards' }
-        format.js 
+        format.js
       else
-        format.html { render :action => "update_player_scoring_cards" }
+        # @user.reload
+        format.html { render 'scoring_cards' }
+        format.js
       end
     end
   end

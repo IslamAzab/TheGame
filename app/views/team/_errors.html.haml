@@ -1,0 +1,7 @@
+#error_explanation
+  %h3
+    = pluralize(object.errors.count, "error")
+    prohibited saving:
+  %ul
+    - object.errors.full_messages.each do |msg|
+      %li= msg
