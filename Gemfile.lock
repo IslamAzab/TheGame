@@ -70,10 +70,10 @@ GEM
     mime-types (1.19)
     multi_json (1.5.0)
     orm_adapter (0.4.0)
-    paperclip (2.7.4)
+    paperclip (2.7.0)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
-      cocaine (~> 0.3.0)
+      cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.3)
     rack (1.4.4)
@@ -132,14 +132,14 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (>= 2.0.4.0)
-  cocaine (~> 0.3.2)
+  cocaine (= 0.3.2)
   coffee-rails (~> 3.2.1)
   devise
   haml (>= 3.1.6)
   haml-rails (>= 0.3.4)
   hpricot
   jquery-rails
-  paperclip (~> 2.7.0)
+  paperclip (= 2.7.0)
   rails (= 3.2.11)
   ruby_parser
   sass-rails (~> 3.2.3)

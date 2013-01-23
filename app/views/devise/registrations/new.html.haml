@@ -17,8 +17,5 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation
-  %span.btn.btn-primary
-    Upload
-    %div= f.file_field :avatar
   %div= f.submit "Sign up", :class => "btn btn-primary"
 = render "devise/shared/links"

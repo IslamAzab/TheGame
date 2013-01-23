@@ -30,5 +30,8 @@
   .field
     = f.label :title
     = f.text_field :title
+  .field  
+    = f.label :avatar
+    = f.file_field :avatar
   .actions
     = f.submit 'Save', :class => "btn btn-primary"

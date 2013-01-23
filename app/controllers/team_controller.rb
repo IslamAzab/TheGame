@@ -19,6 +19,7 @@ class TeamController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { render 'scoring_cards' }
+        format.js 
       else
         format.html { render :action => "update_player_scoring_cards" }
       end

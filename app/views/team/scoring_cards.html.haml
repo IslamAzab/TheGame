@@ -3,7 +3,7 @@
   = @user.full_name
 
 
-= form_for @user, :url => :update_player_scoring_cards, :method => :put do |f|
+= form_for @user, :url => :update_player_scoring_cards, :remote => true, :method => :put do |f|
   = link_to_add_fields 'Add Scoring Card', f, :scoring_cards, "score_cards"
   %table{:style => "#{'display: none' if @user.scoring_cards.blank?}"}
     %tr

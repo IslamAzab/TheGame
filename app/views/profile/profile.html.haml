@@ -1,5 +1,8 @@
 %h4
   = @user.first_name.to_s + "\'s Profile !"
+%img{:src => @user.avatar}
+- 2.times do 
+  %br/
 %p
   %b First name:
   = @user.first_name
@@ -9,7 +12,7 @@
 %p
   %b Title:
   = @user.title
-  
+ 
 - if @user.coach
   %p
     %b Coach name:
