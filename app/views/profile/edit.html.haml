@@ -1,6 +1,6 @@
 %h1 Profile#edit
 
-= form_for @user, :url => update_profile_path, :method => :put do |f|
+= form_for @user, :url => update_profile_path, :html => { :multipart => true }, :method => :put do |f|
   - if @user.errors.any?
     #error_explanation
       %h2
