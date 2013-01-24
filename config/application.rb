@@ -60,5 +60,11 @@ module Game
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Override ActionView::Base.field_error_proc, to disable adding div with class field_with_errors
+    # to fields with error
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+      "#{html_tag}".html_safe 
+    }
   end
 end

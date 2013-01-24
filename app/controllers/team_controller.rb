@@ -20,7 +20,6 @@ class TeamController < ApplicationController
         format.html { render 'scoring_cards' }
         format.js
       else
-        # @user.reload
         format.html { render 'scoring_cards' }
         format.js
       end

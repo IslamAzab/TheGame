@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+//= require jquery_nested_form
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");

@@ -69,6 +69,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
+    nested_form (0.3.1)
     orm_adapter (0.4.0)
     paperclip (2.7.0)
       activerecord (>= 2.3.0)
@@ -139,6 +140,7 @@ DEPENDENCIES
   haml-rails (>= 0.3.4)
   hpricot
   jquery-rails
+  nested_form
   paperclip (= 2.7.0)
   rails (= 3.2.11)
   ruby_parser

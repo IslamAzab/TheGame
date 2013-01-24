@@ -2,17 +2,28 @@
   Show of scoring cards for player : 
   = @user.full_name
 #scoring_cards_errors
-= form_for @user, :url => :update_player_scoring_cards, :remote => true, :method => :put do |f|
+/ = form_for @user, :url => :update_player_scoring_cards, :remote => true, :method => :put do |f|
+/   - if @user.errors.any?
+/     = render 'errors'
+/   = link_to_add_fields 'Add Scoring Card', f, :scoring_cards, "score_cards"
+/   %table{:style => "#{'display: none' if @user.scoring_cards.blank?}"}
+/     %tr
+/       %th Title
+/       %th Score
+/       %th Active?
+/       %th Remove?
+/     = f.fields_for :scoring_cards do |builder|
+/       = render 'score_cards', :f => builder
+/   .actions
+/     = f.submit 'Save', :class => "btn btn-primary", :style => "#{'display: none' if @user.scoring_cards.count == 0}"
+
+= nested_form_for @user, :url => :update_player_scoring_cards, :remote => true, :method => :put do |f|
   - if @user.errors.any?
-    = render 'errors'
-  = link_to_add_fields 'Add Scoring Card', f, :scoring_cards, "score_cards"
-  %table{:style => "#{'display: none' if @user.scoring_cards.blank?}"}
-    %tr
-      %th Title
-      %th Score
-      %th Active?
-      %th Remove?
-    = f.fields_for :scoring_cards do |builder|
-      = render 'score_cards', :f => builder
-  .actions
-    = f.submit 'Save', :class => "btn btn-primary", :style => "#{'display: none' if @user.scoring_cards.count == 0}"
+    = render 'errors', :object => @user
+  = f.fields_for :scoring_cards do |scoring_cards_form|
+    = scoring_cards_form.text_field :title
+    = scoring_cards_form.text_field :score
+    = scoring_cards_form.check_box :active
+    = scoring_cards_form.link_to_remove "remove"
+  %p= f.link_to_add "Add a scoring card", :scoring_cards
+  = f.submit 'Save', :class => "btn btn-primary", :style => "#{'display: none' if @user.scoring_cards.count == 0}"

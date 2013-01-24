@@ -16,3 +16,5 @@ gem "cocaine", "0.3.2"
 # For rake task to convert devise erbs to hamls
 gem 'hpricot'
 gem 'ruby_parser' 
+# nested_form gem
+gem 'nested_form'
