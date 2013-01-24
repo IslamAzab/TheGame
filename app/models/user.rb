@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :players, :foreign_key => :coach_id, :class_name => "User"
 
   # Player has many scoring_cards
-  has_many :scoring_cards
+  has_many :scoring_cards, :dependent => :destroy
   accepts_nested_attributes_for :scoring_cards, :allow_destroy => true
 
   def coach_name

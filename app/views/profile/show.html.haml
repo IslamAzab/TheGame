@@ -23,7 +23,7 @@
 - if @user.players.any?
   %p
     %b Players:
-    = render 'users/players'
+    = render 'users/players', :is_team => true
 
 -if @user.id == current_user.id
   = link_to 'Edit', profile_edit_path, :class => "btn btn-link"
