@@ -20,7 +20,7 @@
     %b Coach name:
     = @user.coach_name
 - if @user.players.any?
-  = render 'players'
+  = render 'players', :is_team => false
 
 
 = link_to 'Edit', edit_user_path(@user), :class => "btn btn-link"
