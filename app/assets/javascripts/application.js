@@ -24,7 +24,14 @@ function remove_fields(link) {
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  // $(link).parent().before(content.replace(regexp, new_id));
   $('[style = "display: none"]').show();
   $(link).siblings("table").children("tbody").append(content.replace(regexp, new_id));
 }
+
+jQuery(function ($) {
+    //override nested_form insertFields to work with table
+    window.NestedFormEvents.prototype.insertFields = function (content, assoc, link) {
+      var $table = $(link).siblings('table');
+      return $(content).appendTo($table);
+    }
+  });
