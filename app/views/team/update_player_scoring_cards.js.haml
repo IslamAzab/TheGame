@@ -1,6 +1,6 @@
 - if @user.errors.any?
-  $("#scoring_cards_errors").html("#{escape_javascript(render 'errors', :object => @user)}")
-  $("#scoring_cards_errors").slideDown()
+  $("#scoring_cards_errors_#{@user.id}").html("#{escape_javascript(render 'errors', :object => @user)}")
+  $("#scoring_cards_errors_#{@user.id}" ).slideDown()
 - else
-  $("#scoring_cards_errors").slideUp()
+  $("#scoring_cards_errors_#{@user.id}" ).slideUp()
 

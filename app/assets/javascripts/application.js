@@ -37,3 +37,7 @@ jQuery(function ($) {
       return $(content).appendTo($table);
     }
   });
+
+function popUp (link) {
+  $(link).popover('toggle');
+}

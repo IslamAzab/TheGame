@@ -10,6 +10,7 @@
     %th Maximum score
     - if is_team
       %th
+      %th
     - players.each do |p|
       %tr
         %td= p.full_name
@@ -18,3 +19,19 @@
         %td= p.max_score
         - if is_team
           %td= link_to 'Scoring Cards', update_player_scoring_cards_path(p)
+          %td
+            / Button to trigger modal
+            = link_to 'Scoring cards modal', {},{"data-toggle" => "modal", :href => "#Modal_#{p.id}", :role => "button"}
+
+            / Modal
+            .modal.hide.fade{ :id => "Modal_#{p.id}","aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+              .modal-header
+                = button_tag '×',{:class => "close","aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+                %h3#myModalLabel
+                  Show of scoring cards for player :
+                  = p.full_name
+              .modal-body
+                %p
+                  = render 'popup_cards',:player => p
+              .modal-footer
+                %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
