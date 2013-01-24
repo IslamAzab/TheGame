@@ -1,10 +1,5 @@
-%tr.cards
-  %td
-    = f.text_field :title
-  %td
-    = f.text_field :score
-  %td
-    = f.check_box :active
-  %td
-    = f.hidden_field :_destroy
-    = link_to_function "remove", "remove_fields(this)"
+%tr.fields
+  %td= f.text_field :title
+  %td= f.text_field :score
+  %td= f.check_box :active
+  %td= f.link_to_remove "remove"
