@@ -4,4 +4,4 @@
 - if @user.players.any?
   %p
     %b Players:
-    = render 'users/players'
+    = render 'users/players', :is_team => true

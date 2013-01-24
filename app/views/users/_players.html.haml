@@ -8,9 +8,13 @@
     %th Title
     %th Average score
     %th Maximum score
+    - if is_team
+      %th
     - players.each do |p|
       %tr
         %td= p.full_name
         %td= p.title
         %td= p.average_score
         %td= p.max_score
+        - if is_team
+          %td= link_to 'Scoring Cards', update_player_scoring_cards_path(p)

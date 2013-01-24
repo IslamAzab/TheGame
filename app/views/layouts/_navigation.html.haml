@@ -3,6 +3,7 @@
   %ul.nav.pull-right
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown"}
+        = image_tag current_user.avatar.url(:thumb)
         = current_user.full_name
         %b.caret
       %ul.dropdown-menu
@@ -14,18 +15,9 @@
         - unless current_user.players.blank?
           %li          
             = link_to 'Team', team_path
-          / %li.dropdown-submenu
-          /   %a{:href => "#"} Team options
-          /   %ul.dropdown-menu
-          /     %li
-          /       %a{:href => "#"} Second level link
-          /     %li
-          /       %a{:href => "#"} Second level link
         %li.divider
         %li
           = link_to 'Logout', destroy_user_session_path, :method => :delete
     %li.divider
-    %li
-      = image_tag current_user.avatar.url(:thumb)
     %li
       = link_to 'Logout', destroy_user_session_path, :method => :delete

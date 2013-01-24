@@ -1,11 +1,6 @@
-// K solution
 - if @user.errors.any?
   $("#scoring_cards_errors").html("#{escape_javascript(render 'errors', :object => @user)}")
   $("#scoring_cards_errors").slideDown()
 - else
   $("#scoring_cards_errors").slideUp()
-/ var errors = "#{escape_javascript(render 'errors')}"
-/ $("table").parent().prepend(errors)
 
-/ var new_cards = #{render 'test'}
-/ $("tbody").replaceWith(new_cards)

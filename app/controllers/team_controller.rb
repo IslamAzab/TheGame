@@ -15,7 +15,6 @@ class TeamController < ApplicationController
   def update_player_scoring_cards
     @user = current_user.players.find(params[:id])
     @user.scoring_cards_attributes = params[:user][:scoring_cards_attributes]
-    @resource = @user
     respond_to do |format|
       if @user.save
         format.html { render 'scoring_cards' }
