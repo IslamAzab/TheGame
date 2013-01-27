@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   # Player has many scoring_cards
   has_many :scoring_cards, :dependent => :destroy
+  has_many :results
   accepts_nested_attributes_for :scoring_cards, :allow_destroy => true
 
   def coach_name

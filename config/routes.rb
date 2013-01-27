@@ -1,5 +1,9 @@
 Game::Application.routes.draw do
 
+  get "game" => 'game#index', :as => :games
+  
+  put "game/:id" => 'game#update', :as => :update_game
+
   get "team" => "team#index", :as => :team
 
   get "team/:id/scoring_cards" => "team#scoring_cards", :as => :player_scoring_cards

@@ -18,3 +18,5 @@ gem 'hpricot'
 gem 'ruby_parser' 
 # nested_form gem
 gem 'nested_form'
+#inplace edit
+gem 'bootstrap-editable-rails'
