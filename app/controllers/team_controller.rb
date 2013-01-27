@@ -11,7 +11,7 @@ class TeamController < ApplicationController
     @user = current_user.players.find(params[:id])
   end
 
-  # PUT /team:id/scoring_cards
+  # PUT /team/:id/scoring_cards
   def update_player_scoring_cards
     @user = current_user.players.find(params[:id])
     @user.scoring_cards_attributes = params[:user][:scoring_cards_attributes]
@@ -24,10 +24,6 @@ class TeamController < ApplicationController
         format.js
       end
     end
-  end
-
-  def redraw_cards
-    
   end
 
   protected
