@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-editable
-//= require bootstrap-editable-rails
 //= require_tree .
 //= require jquery_nested_form
 

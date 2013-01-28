@@ -25,11 +25,13 @@ class GameController < ApplicationController
   def edit
   end
 
+  # PUT /game/:id
   def update
     user = current_user
     result = user.results.find(params[:id])
-    result.score = params[:score]
-    result.save
+    result.score = params[:name]
+    puts result.save
+    puts result.errors.inspect
     respond_to do |format|
       format.js
     end

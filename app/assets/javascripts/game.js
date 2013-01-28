@@ -5,14 +5,15 @@ $(function(){
         ajaxOptions: {
           type: 'put'
         },
-        placement: 'right'
+        placement: 'right',
       }
       )
   });
 
   $('#period_selector').change(function(){
     $.ajax({
-      url: "/game.js",
+      url: "/game",
+      accepts: "application/javascript",
       data: {
         period: $(this).val()
       }
