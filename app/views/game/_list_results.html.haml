@@ -1,13 +1,18 @@
-%table
+%table#results_table
   %tr
     %th Title
     %th Score
     - (start_day..end_day).each do |day|
-      %th= day
-  - @results.each do |result|
+      %th= "#{day.dayname}, #{day}"
+  - @scoring_cards.each do |sc|
     %tr
-      %td= result.scoring_card.title
-      %td= result.scoring_card.score
-      %td.editable.result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => update_game_path(result),                 |
-       :pk => result.id, :name => :score}}
-        = result.score
+      %td= sc.title
+      %td= sc.score
+      - (start_day..end_day).each do |day|
+        - result = @user.results.where(:scoring_card_id => sc.id , :date => day).try(:first)
+        - if result
+          %td.editable.result_score{:data => {:type => 'text', :'original-title' => "Enter new score :", :url => update_game_path(result), |
+          :pk => result.id, :name => :score}}
+            = result.score
+        - else
+          %td -
