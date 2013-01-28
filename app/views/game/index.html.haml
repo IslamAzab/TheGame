@@ -1,13 +1,3 @@
-%h1= "#{@user.full_name} today's results"
-%table
-  %tr
-    %th Title
-    %th Score
-    %th Result
-  - @results.each do |result|
-    %tr
-      %td= result.scoring_card.title
-      %td= result.scoring_card.score
-      %td.editable.result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => update_game_path(result),                 |
-       :pk => result.id, :name => :score}}
-        = result.score
+%h1= "#{@user.full_name} results"
+= select_tag '', options_for_select(['today','week']), :prompt => 'Select period', :id => 'period_selector'
+= render 'list_results', :start_day => @start_day, :end_day => @end_day

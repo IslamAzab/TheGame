@@ -12,4 +12,6 @@ class ScoringCard < ActiveRecord::Base
     ScoringCard.where(:active => true)
   end
 
+  scope :active_cards2, where(:active => true)
+
 end
