@@ -1,4 +1,4 @@
-- today = Date.today
+- last_editable_day = end_day > Date.today ? Date.today : end_day
 %table#results_table
   %tr
     %th Card
@@ -9,7 +9,7 @@
     %tr
       %td= sc.title
       %td= sc.score
-      - (start_day..today).each do |day|
+      - (start_day..last_editable_day).each do |day|
         - result = @user.results.where(:scoring_card_id => sc.id , :date => day).try(:first)
         %td
           -if result

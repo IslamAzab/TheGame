@@ -9,13 +9,21 @@ class GameController < ApplicationController
     @scoring_cards = @user.scoring_cards.active_cards
     current_day = Date.today
 
-    if period == 'week'      
-      @start_day = current_day - current_day.wday
-      @end_day = @start_day + 4 # thrusday =  sunday + 4
-    else
-      @start_day = current_day
-      @end_day = current_day
-    end
+    @start_day = params[:start_day].nil? ? current_day :
+     Date.strptime(params[:start_day], '%Y-%m-%d')
+
+    @end_day = params[:end_day].nil? ? current_day :
+     Date.strptime(params[:end_day], '%Y-%m-%d')
+
+    @end_day = @end_day < @start_day ? @start_day : @end_day 
+
+    # if period == 'week'      
+    #   @start_day = current_day - current_day.wday
+    #   @end_day = @start_day + 4 # thrusday =  sunday + 4
+    # else
+    #   @start_day = current_day
+    #   @end_day = current_day
+    # end
 
 
     respond_to do |format|
