@@ -8,10 +8,5 @@ class ScoringCard < ActiveRecord::Base
   validates :score, :presence => true, :numericality => true
   validates :title, :presence => true
 
-  def self.active_cards
-    ScoringCard.where(:active => true)
-  end
-
-  scope :active_cards2, where(:active => true)
-
+  scope :active_cards, where(:active => true)
 end

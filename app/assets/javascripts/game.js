@@ -1,23 +1,27 @@
 $(function(){
+  // $.fn.editable.defaults.mode = 'inline';
+
   $('.editable.result_score').live('mouseup', function(){
-      $(this).editable(
+    $(this).editable(
       {
         ajaxOptions: {
           type: 'put'
         },
         placement: 'right',
+        clear: false
       }
-      )
+    )
   });
 
   $('#period_selector').change(function(){
     $.ajax({
       url: "/game",
-      accepts: "application/javascript",
       data: {
         period: $(this).val()
-      }
+      },
+      dataType: 'script'
     });
   });
+
   $('.selectpicker').selectpicker();
 });
