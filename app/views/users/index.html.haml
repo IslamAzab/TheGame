@@ -14,7 +14,7 @@
     %tr
       %td
         = image_tag user.avatar.url(:thumb) 
-      %td= user.full_name
+      %td= link_to user.full_name, show_game_path(user)
       %td= user.title
       - if user.coach
         %td= user.coach_name

@@ -27,7 +27,7 @@ $(function(){
 
   $('#period_selector').change(function(){
     $.ajax({
-      url: "/game",
+      url: "/game/"+$(this).attr("player_id")+"/",
       data: {
         period: $(this).val()
       },

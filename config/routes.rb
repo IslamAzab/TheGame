@@ -1,10 +1,10 @@
 Game::Application.routes.draw do
 
-  get "game" => 'game#index', :as => :games
+  get "game/:id" => 'game#index', :as => :show_game
   
   put "game/:id" => 'game#update', :as => :update_game
 
-  post "game" => 'game#create', :as => :create_game
+  post "game/:id" => 'game#create', :as => :create_game
 
   get "team" => "team#index", :as => :team
 
