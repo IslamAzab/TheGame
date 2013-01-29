@@ -5,7 +5,7 @@ class GameController < ApplicationController
 
     @user = current_user
     @scoring_cards = @user.scoring_cards.active_cards
-    current_day = Time.now.to_date
+    current_day = Date.today
 
     if period == 'week'      
       @start_day = current_day - current_day.wday
@@ -15,10 +15,6 @@ class GameController < ApplicationController
       @end_day = current_day
     end
 
-    # create today's results
-    @scoring_cards.each do |sc|
-      @user.results.find_or_create_by_scoring_card_id_and_date(sc.id, current_day)
-    end
 
     respond_to do |format|
       format.js
@@ -37,5 +33,19 @@ class GameController < ApplicationController
       format.js
     end
   end
+
+  # POST /game
+  def create
+    user = current_user
+    result = Result.new(:user_id => user.id,
+     :scoring_card_id => params[:pk], :date => Date.today)
+    result.score = params[:value]
+    result.save
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
 

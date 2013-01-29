@@ -2,14 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#results_table td
+#results_table td span
 {
-  text-align: center;
-  padding: 6px;
   border-bottom: none;
-}
-
-#results_table th
-{
-  padding: 8px;
 }

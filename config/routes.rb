@@ -4,6 +4,8 @@ Game::Application.routes.draw do
   
   put "game/:id" => 'game#update', :as => :update_game
 
+  post "game" => 'game#create', :as => :create_game
+
   get "team" => "team#index", :as => :team
 
   get "team/:id/scoring_cards" => "team#scoring_cards", :as => :player_scoring_cards
