@@ -1,4 +1,5 @@
 class GameController < ApplicationController
+  # GET /game
   def index
     period = params[:period] || 'today'
 
