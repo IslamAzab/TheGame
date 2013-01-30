@@ -1,6 +1,8 @@
-%h1= "#{@user.full_name} Results"
+%h1#h1= "#{@user.full_name} Results"
 = select_tag '', options_for_select(periods), :id => 'period_selector', :class => "selectpicker", :player_id => @user.id
 #date
   = text_field_tag 'from_date', @start_day, :type => 'date'
   = text_field_tag 'to_date', @end_day, :type => 'date'
+  %a{:class => "btn btn-primary btn-small", :onclick => "displayResult()" } 
+    %i{:class => "icon-share-alt icon-white"}	
 = render 'list_results', :start_day => @start_day, :end_day => @end_day

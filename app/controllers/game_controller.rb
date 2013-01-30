@@ -3,8 +3,7 @@ class GameController < ApplicationController
 
   # GET /game/:id
   def index
-    period = params[:period] || 'today'
-
+    
     @user = User.find(params[:id])
     @scoring_cards = @user.scoring_cards.active_cards
     current_day = Date.today
@@ -15,16 +14,7 @@ class GameController < ApplicationController
     @end_day = params[:end_day].nil? ? current_day :
      Date.strptime(params[:end_day], '%Y-%m-%d')
 
-    @end_day = @end_day < @start_day ? @start_day : @end_day 
-
-    # if period == 'week'      
-    #   @start_day = current_day - current_day.wday
-    #   @end_day = @start_day + 4 # thrusday =  sunday + 4
-    # else
-    #   @start_day = current_day
-    #   @end_day = current_day
-    # end
-
+    @end_day = @end_day < @start_day ? @start_day : @end_day
 
     respond_to do |format|
       format.js

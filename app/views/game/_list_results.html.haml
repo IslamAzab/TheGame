@@ -1,3 +1,4 @@
+- require 'json'
 - last_editable_day = end_day > Date.today ? Date.today : end_day
 %table#results_table
   %tr
@@ -13,7 +14,7 @@
         - result = @user.results.where(:scoring_card_id => sc.id , :date => day).try(:first)
         %td
           -if result
-            %span.editable.result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => update_game_path(@user), :pk => result.id } }
+            %span.editable.result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => update_game_path(@user), :pk => result.id}}
               = result.score
           - else
             %span.editable.new_result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => create_game_path(@user, :date => day), :pk => sc.id} }
