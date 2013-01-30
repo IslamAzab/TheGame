@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
 
   # Validation
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
-  validates :first_name, :presence => true
 
   # Coach has many players
   belongs_to :coach, :class_name => "User"
