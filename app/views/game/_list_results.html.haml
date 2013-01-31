@@ -13,9 +13,17 @@
       - (start_day..last_editable_day).each do |day|
         - result = @user.results.where(:scoring_card_id => sc.id , :date => day).try(:first)
         %td
-          -if result
-            %span.editable.result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => update_game_path(@user), :pk => result.id}}
+          - values = {}
+          -if result            
+            - values[:comment] = result.comment
+            - values[:score] = result.score
+            %span.editable.result_score{:data => {:type => 'result', :'original-title' => "Update score :", :url => update_game_path(@user), :pk => result.id, :value => values.to_json}}
               = result.score
           - else
-            %span.editable.new_result_score{:data => {:type => 'number', :'original-title' => "Enter new score :", :url => create_game_path(@user, :date => day), :pk => sc.id} }
+            - values[:comment] = nil
+            - values[:score] = nil
+            - params = {}
+            - params[:scoring_card_id] = sc.id
+            - params[:date] = day
+            %span.editable.new_result_score{:data => {:type => 'result', :'original-title' => "Enter new score :", :url => create_game_path(@user), :params => params.to_json, :value => values.to_json }}
               = '-'

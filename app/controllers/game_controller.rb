@@ -26,7 +26,8 @@ class GameController < ApplicationController
   def update
     user = User.find(params[:id])
     result = user.results.find(params[:pk])
-    result.score = params[:value]
+    result.score = params[:value][:score]
+    result.comment = params[:value][:comment]
     result.save
 
     respond_to do |format|
@@ -37,9 +38,12 @@ class GameController < ApplicationController
   # POST /game/:id
   def create
     user = User.find(params[:id])
-    result = Result.new(:user_id => user.id,
-     :scoring_card_id => params[:pk], :date => params[:date])
-    result.score = params[:value]
+    result = Result.new
+    result.user_id = user.id
+    result.scoring_card_id = params[:scoring_card_id]
+    result.date = params[:date]
+    result.score = params[:value][:score]
+    result.comment = params[:value][:comment]
     result.save
 
     respond_to do |format|

@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130082118) do
+ActiveRecord::Schema.define(:version => 20130131090957) do
 
   create_table "results", :force => true do |t|
     t.integer  "user_id"
     t.integer  "scoring_card_id"
-    t.integer  "score",           :default => 0
+    t.integer  "score",                          :default => 0
     t.date     "date"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "comment",         :limit => nil
   end
 
   create_table "scoring_cards", :force => true do |t|

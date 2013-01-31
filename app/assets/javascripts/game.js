@@ -10,24 +10,20 @@ $(function(){
         placement: 'right',
         clear: false
       }
-    )
+    );
   });
 
   $('.editable.new_result_score').live('mouseup', function(){
     $(this).editable(
       {
+        send: 'always',
         ajaxOptions: {
           type: 'post'
         },
         placement: 'right',
         clear: false
       }
-    )
-  });
-
-  $('div.editable-input').live('focus', function(){ 
-    if(!$(this).children('textarea').length)
-      $(this).prepend('<textarea rows="5" class="field span3">hi</textarea><br/>');
+    );
   });
 
   $('#period_selector').change(function(){
@@ -42,17 +38,6 @@ $(function(){
       dataType: 'script'
     });
   });
-
-  // $('#from_date, #to_date').change(function(){
-  //   $.ajax({
-  //     url: "/game/"+$('#period_selector').attr("player_id"),
-  //     data: {
-  //       start_day: $("#from_date").val(),
-  //       end_day: $("#to_date").val()
-  //     },
-  //     dataType: 'script'
-  //   });
-  // });
 
   $('.selectpicker').selectpicker();
 });
