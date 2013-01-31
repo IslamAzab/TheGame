@@ -1,29 +1,33 @@
 - require 'json'
-- last_editable_day = end_day > Date.today ? Date.today : end_day
+- last_editable_day = [end_day, Date.today].min
+
 %table#results_table
   %tr
     %th Card
     %th Value
     - (start_day..end_day).each do |day|
       %th= "#{day.dayname}, #{day}"
+
+  %tr
+    %th Total
+    %td
+    - (start_day..last_editable_day).each do |day|
+      %td{:id => "total_score_of_#{day}"}
+        %strong= @user.day_games.find_by_date(day).try(:score)
+
   - @scoring_cards.each do |sc|
     %tr
       %td= sc.title
       %td= sc.score
       - (start_day..last_editable_day).each do |day|
-        - result = @user.results.where(:scoring_card_id => sc.id , :date => day).try(:first)
+        - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first
         %td
-          - values = {}
           -if result            
-            - values[:comment] = result.comment
-            - values[:score] = result.score
+            - values = {:comment => result.comment, :score => result.score}
             %span.editable.result_score{:data => {:type => 'result', :'original-title' => "Update score :", :url => update_game_path(@user), :pk => result.id, :value => values.to_json}}
               = result.score
           - else
-            - values[:comment] = nil
-            - values[:score] = nil
-            - params = {}
-            - params[:scoring_card_id] = sc.id
-            - params[:date] = day
-            %span.editable.new_result_score{:data => {:type => 'result', :'original-title' => "Enter new score :", :url => create_game_path(@user), :params => params.to_json, :value => values.to_json }}
+            - values = {:comment => nil, :score => nil}
+            - jsParams = {:scoring_card_id => sc.id, :date => day}            
+            %span.editable.new_result_score{:data => {:type => 'result', :'original-title' => "Enter new score :", :url => create_game_path(@user), :params => jsParams.to_json, :value => values.to_json }}
               = '-'

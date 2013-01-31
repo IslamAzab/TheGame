@@ -4,17 +4,15 @@ class GameController < ApplicationController
   # GET /game/:id
   def index
     
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || current_user.id)
     @scoring_cards = @user.scoring_cards.active_cards
-    current_day = Date.today
+    today = Date.today
 
-    @start_day = params[:start_day].nil? ? current_day :
+    @start_day = params[:start_day].nil? ? today :
      Date.strptime(params[:start_day], '%Y-%m-%d')
 
-    @end_day = params[:end_day].nil? ? current_day :
+    @end_day = params[:end_day].nil? ? today :
      Date.strptime(params[:end_day], '%Y-%m-%d')
-
-    @end_day = @end_day < @start_day ? @start_day : @end_day
 
     respond_to do |format|
       format.js
@@ -31,7 +29,10 @@ class GameController < ApplicationController
     result.save
 
     respond_to do |format|
-      format.js
+      format.js {
+        @date = result.date
+        @user = user
+      }
     end
   end
 
@@ -47,7 +48,10 @@ class GameController < ApplicationController
     result.save
 
     respond_to do |format|
-      format.js
+      format.js {
+        @date = result.date
+        @user = user
+      }
     end
   end
 

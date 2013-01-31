@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131090957) do
+ActiveRecord::Schema.define(:version => 20130131142453) do
+
+  create_table "day_games", :force => true do |t|
+    t.integer  "score",      :default => 0
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "results", :force => true do |t|
     t.integer  "user_id"
@@ -51,12 +59,13 @@ ActiveRecord::Schema.define(:version => 20130131090957) do
     t.string   "username"
     t.boolean  "is_admin",               :default => false
     t.integer  "coach_id"
-    t.integer  "average_score"
-    t.integer  "max_score"
+    t.float    "average_score",          :default => 0.0
+    t.integer  "top_score",              :default => 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.date     "top_score_date"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

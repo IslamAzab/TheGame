@@ -1,6 +1,6 @@
 Game::Application.routes.draw do
 
-  get "game/:id" => 'game#index', :as => :show_game
+  get "game/(:id)" => 'game#index', :as => :show_game
   
   put "game/:id" => 'game#update', :as => :update_game
 

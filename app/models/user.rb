@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :login, :username, :first_name, :last_name, :title
-
+  attr_accessible :top_score_date
   attr_accessible :avatar
   has_attached_file :avatar,:styles =>{ :medium => "300x300>", :thumb => "32x32>" }
 
@@ -23,15 +23,22 @@ class User < ActiveRecord::Base
 
   # Player has many scoring_cards
   has_many :scoring_cards, :dependent => :destroy
+  has_many :day_games, :dependent => :destroy
   has_many :results
   accepts_nested_attributes_for :scoring_cards, :allow_destroy => true
 
   def coach_name
-    self.coach.first_name + " " + self.coach.last_name if self.coach    
+    self.coach.try(:full_name)
   end
 
   def full_name
-    self.first_name + " " + self.last_name    
+    "#{self.first_name} #{self.last_name}"    
+  end
+
+  def update_average_and_top_score day_game
+    self.top_score = day_game.score if(day_game.score > self.top_score)
+    self.average_score = self.day_games.select('Avg(score) score').first.score
+    self.save
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)

@@ -7,7 +7,7 @@
     %th Name
     %th Title
     %th Average score
-    %th Maximum score
+    %th Top score
     - if is_team
       %th
       %th
@@ -16,7 +16,7 @@
         %td= link_to p.full_name, show_game_path(p)
         %td= p.title
         %td= p.average_score
-        %td= p.max_score
+        %td= p.top_score
         - if is_team
           %td= link_to 'Scoring Cards', update_player_scoring_cards_path(p)
           %td
