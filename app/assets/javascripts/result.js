@@ -36,7 +36,7 @@ $(function(){
         @method render() 
         **/        
         render: function() {
-           this.$input = this.$tpl.find('input');
+           this.$input = this.$tpl.find('input, textarea');
         },
         
         /**
@@ -121,6 +121,7 @@ $(function(){
         @method input2value() 
        **/          
        input2value: function() { 
+          console.log(this.$input);
            return {
               comment: this.$input.filter('[name="comment"]').val(), 
               score: this.$input.filter('[name="score"]').val()
@@ -151,7 +152,7 @@ $(function(){
     });
 
     Result.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
-        tpl: '<div class="editable-result"><label><span>Comment: </span><input type="textarea" name="comment" class="input-small"></label></div>'+
+        tpl: '<div class="editable-result"><label><span>Comment: </span><textarea name="comment" class="field span3" rows="3"></textarea></label></div>'+
              '<div class="editable-result"><label><span>Score: </span><input type="number" name="score" class="input-small"></label></div>',
              
         inputclass: ''
