@@ -22,8 +22,18 @@ class GameController < ApplicationController
 
   # PUT /game/:id
   def update
+
     user = User.find(params[:id])
-    result = user.results.find(params[:pk])
+    result = user.results.find_by_date_and_scoring_card_id(
+      params[:date],params[:scoring_card_id])      
+
+    unless result
+      result = Result.new
+      result.user_id = user.id
+      result.scoring_card_id = params[:scoring_card_id]
+      result.date = params[:date]
+    end
+    
     result.score = params[:value][:score]
     result.comment = params[:value][:comment]
     result.save
@@ -31,28 +41,9 @@ class GameController < ApplicationController
     respond_to do |format|
       format.js {
         @date = result.date
-        @user = user
+        @total_score = user.day_games.find_by_date(result.date).try(:score)
       }
-    end
-  end
-
-  # POST /game/:id
-  def create
-    user = User.find(params[:id])
-    result = Result.new
-    result.user_id = user.id
-    result.scoring_card_id = params[:scoring_card_id]
-    result.date = params[:date]
-    result.score = params[:value][:score]
-    result.comment = params[:value][:comment]
-    result.save
-
-    respond_to do |format|
-      format.js {
-        @date = result.date
-        @user = user
-      }
-    end
+    end    
   end
 
   def has_access_rights
