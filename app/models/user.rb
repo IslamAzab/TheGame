@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_many :results
   accepts_nested_attributes_for :scoring_cards, :allow_destroy => true
 
+  before_save :update_top_score_date
+
   def coach_name
     self.coach.try(:full_name)
   end
@@ -35,8 +37,8 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"    
   end
 
-  def update_average_and_top_score day_game
-    self.top_score = day_game.score if(day_game.score > self.top_score)
+  def update_average_and_top_score
+    self.top_score = self.day_games.select('Max(score) score').first.score
     self.average_score = self.day_games.select('Avg(score) score').first.score
     self.save
   end
@@ -48,6 +50,10 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def update_top_score_date
+    self.top_score_date = Date.today if self.top_score_changed?
   end
 
 end

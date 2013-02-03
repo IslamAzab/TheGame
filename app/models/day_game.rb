@@ -6,6 +6,6 @@ class DayGame < ActiveRecord::Base
 
   def update_user_average_and_top_score
   	user = User.find(self.user_id)
-  	user.update_average_and_top_score(self)
+  	user.update_average_and_top_score
   end
 end
