@@ -42,3 +42,8 @@ jQuery(function ($) {
 function popUp (link) {
   $(link).popover('toggle');
 }
+
+$('#modal_submit').live('click', function(){
+  $('.modal').modal('hide');
+  return true;
+});

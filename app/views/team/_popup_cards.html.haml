@@ -15,4 +15,4 @@
       = render 'score_cards', :f => scoring_cards_form
   = f.link_to_add "Add a scoring card", :scoring_cards
   %br/
-  = f.submit 'Save', :class => "btn btn-primary", :style => "#{'display: none' if player.scoring_cards.count == 0}"
+  = f.submit 'Save', :class => "btn btn-primary", :id => 'modal_submit',:style => "#{'display: none' if player.scoring_cards.count == 0}"
