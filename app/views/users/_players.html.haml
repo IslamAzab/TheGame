@@ -11,7 +11,6 @@
     %th Top score date
     - if is_team
       %th
-      %th
     - players.each do |p|
       %tr
         %td= link_to p.full_name, show_game_path(p)
@@ -20,7 +19,6 @@
         %td= p.top_score
         %td= p.top_score_date
         - if is_team
-          %td= link_to 'Scoring Cards', update_player_scoring_cards_path(p)
           %td
             / Button to trigger modal
             = link_to 'Scoring cards modal', {},{"data-toggle" => "modal", :href => "#Modal_#{p.id}", :role => "button"}
