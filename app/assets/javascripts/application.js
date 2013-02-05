@@ -44,6 +44,11 @@ function popUp (link) {
 }
 
 $('#modal_submit').live('click', function(){
-  $('.modal').modal('hide');
+  var modal = $(this).parents('.modal');
+  var form = $(modal).children('.modal-body').children('form');
+
+  $(form).submit();
+  $(modal).modal('hide');
+  
   return true;
 });

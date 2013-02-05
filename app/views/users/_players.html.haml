@@ -26,7 +26,8 @@
             / Modal
             .modal.hide.fade{ :id => "Modal_#{p.id}","aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
               .modal-header
-                = button_tag '×',{:class => "close","aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+                = button_tag '',{:class => "close","aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} do
+                  %i.icon-remove
                 %h3#myModalLabel
                   Show of scoring cards for player :
                   = p.full_name
@@ -35,3 +36,4 @@
                   = render 'popup_cards',:player => p
               .modal-footer
                 %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
+                %button.btn.btn-primary{:id => 'modal_submit'} Save
