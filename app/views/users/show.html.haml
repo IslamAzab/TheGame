@@ -21,6 +21,9 @@
 %p
   %b Top Score:
   = @user.top_score
+  %b achieved at
+  = @user.top_score_date
+  
 - if @user.coach
   %p
     %b Coach name:

@@ -8,6 +8,7 @@
     %th Title
     %th Average score
     %th Top score
+    %th Top score date
     - if is_team
       %th
       %th
@@ -17,6 +18,7 @@
         %td= p.title
         %td= p.average_score
         %td= p.top_score
+        %td= p.top_score_date
         - if is_team
           %td= link_to 'Scoring Cards', update_player_scoring_cards_path(p)
           %td
