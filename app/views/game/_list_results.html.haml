@@ -3,23 +3,16 @@
 
 %table#results_table
   %tr
-    %th Card
-    %th Value
-    - (start_day..end_day).each do |day|
-      %th= "#{day.dayname}, #{day}"
-
-  %tr
+    %th 
     %th Total
-    %td
-    - (start_day..last_editable_day).each do |day|
+    - @scoring_cards.each do |sc|
+      %th= "#{sc.title}##{sc.score}"
+  - (start_day..end_day).each do |day|
+    %tr
+      %th= "#{day.dayname}, #{day}"
       %td{:id => "total_score_of_#{day}"}
         %strong= @user.day_games.find_by_date(day).try(:score)
-
-  - @scoring_cards.each do |sc|
-    %tr
-      %td= sc.title
-      %td= sc.score
-      - (start_day..last_editable_day).each do |day|
+      - @scoring_cards.each do |sc|
         - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first
         %td
           - values = {:comment => result.try(:comment), :score => result.try(:score)}
