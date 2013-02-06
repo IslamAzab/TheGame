@@ -19,7 +19,7 @@
   %b Top Score:
   = @user.top_score
   %b achieved at
-  = @user.top_score_date
+  = l @user.top_score_date, :format => :long
  
 - if @user.coach
   %p

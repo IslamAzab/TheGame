@@ -9,7 +9,7 @@
       %th= "#{sc.title}##{sc.score}"
   - (start_day..end_day).each do |day|
     %tr
-      %th= "#{day.dayname}, #{day}"
+      %th= l day, :format => :long
       %td{:id => "total_score_of_#{day}"}
         %strong= @user.day_games.find_by_date(day).try(:score)
       - @scoring_cards.each do |sc|

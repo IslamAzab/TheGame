@@ -17,7 +17,7 @@
         %td= p.title
         %td= p.average_score
         %td= p.top_score
-        %td= p.top_score_date
+        %td= l p.top_score_date, :format => :long
         - if is_team
           %td
             / Button to trigger modal
