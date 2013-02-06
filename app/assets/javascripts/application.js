@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-editable
+//= require jquery.ui.datepicker
 //= require_tree .
 //= require jquery_nested_form
 
@@ -51,4 +52,10 @@ $('#modal_submit').live('click', function(){
   $(modal).modal('hide');
   
   return true;
+});
+
+$(function(){
+  $('.datePicker').datepicker({
+    dateFormat: 'dd-mm-yy'
+  });
 });

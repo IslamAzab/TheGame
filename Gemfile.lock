@@ -64,6 +64,9 @@ GEM
     jquery-rails (2.1.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.0)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.6)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -143,6 +146,7 @@ DEPENDENCIES
   haml-rails (>= 0.3.4)
   hpricot
   jquery-rails
+  jquery-ui-rails
   nested_form
   paperclip (= 2.7.0)
   rails (= 3.2.11)

@@ -20,3 +20,5 @@ gem 'ruby_parser'
 gem 'nested_form'
 # inplace edit
 gem 'bootstrap-x-editable-rails'
+
+gem 'jquery-ui-rails'

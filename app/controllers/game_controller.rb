@@ -9,10 +9,10 @@ class GameController < ApplicationController
     today = Date.today
 
     @start_day = params[:start_day].nil? ? today :
-     Date.strptime(params[:start_day], '%Y-%m-%d')
+     Date.strptime(params[:start_day], '%d-%m-%Y')
 
     @end_day = params[:end_day].nil? ? today :
-     Date.strptime(params[:end_day], '%Y-%m-%d')
+     Date.strptime(params[:end_day], '%d-%m-%Y')
 
     respond_to do |format|
       format.js
