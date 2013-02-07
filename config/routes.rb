@@ -18,7 +18,7 @@ Game::Application.routes.draw do
   put "profile" => "profile#update", :as => :update_profile
 
   # get "profile/show"
-  get "profile/:id" => "profile#show", :as => :show_other_profile
+  # get "profile/:id" => "profile#show", :as => :show_other_profile
   
   devise_for :users, :controllers => {:sessions => "sessions"}, :path => 'accounts'
 
