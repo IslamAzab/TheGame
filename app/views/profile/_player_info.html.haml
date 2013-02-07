@@ -1,0 +1,31 @@
+%h4= "#{@user.short_name}'s Profile !"
+
+= image_tag @user.avatar.url, :class => "margin"
+ 
+%p
+  %b First name:
+  = @user.first_name
+
+%p
+  %b Last name:
+  = @user.last_name
+
+%p
+  %b Title:
+  = @user.title
+
+%p
+  %b Average Score:
+  = @user.average_score
+
+%p
+  %b Top Score:
+  = @user.top_score
+  %b achieved on
+  = l(@user.top_score_date, :format => :long) if @user.top_score_date
+  
+%p
+  %b Coach name:
+  = @user.coach_name || 'not assigned'
+
+= render 'users/players'

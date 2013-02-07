@@ -1,34 +1,4 @@
-%h4
-  = @user.first_name.to_s + "\'s Profile !"
-= image_tag @user.avatar.url
-- 2.times do 
-  %br/
-%p
-  %b First name:
-  = @user.first_name
-%p
-  %b Last name:
-  = @user.last_name
-%p
-  %b Title:
-  = @user.title
-%p
-  %b Average Score:
-  = @user.average_score
-%p
-  %b Top Score:
-  = @user.top_score
-  %b achieved at
-  = l @user.top_score_date, :format => :long
- 
-- if @user.coach
-  %p
-    %b Coach name:
-    = @user.coach_name
-
-- if @user.players.any?
-  %p
-    %b Players:
-    = render 'users/players', :is_team => false
+= render 'player_info'
 
 = link_to 'Edit', profile_edit_path, :class => "btn btn-link"
+= link_to 'Back', profile_path, :class => "btn btn-link"

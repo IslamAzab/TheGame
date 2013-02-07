@@ -1,6 +1,5 @@
 class ProfileController < ApplicationController
-  # skip_before_filter :authorize
-  
+    
   # GET /profile
   def profile
     @user = current_user

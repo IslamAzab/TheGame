@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 		if current_user.is_admin?
 			users_path
 		else
-			profile_path
+			show_game_path
 		end 
 	end
 
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 		if current_user.is_admin?
 			users_path
 		else
-			profile_path
+			show_game_path
 		end
 	end
 

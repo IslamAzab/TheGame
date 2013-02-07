@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"    
   end
 
+  def short_name
+    self.first_name || self.username
+  end
+
   def update_average_and_top_score
     self.top_score = self.day_games.select('Max(score) score').first.score
     self.average_score = self.day_games.select('Avg(score) score').first.score
@@ -55,6 +59,14 @@ class User < ActiveRecord::Base
 
   def update_top_score_date
     self.top_score_date = Date.today if self.top_score_changed?
+  end
+
+  def can_show_games_of(player)
+   self.is_admin? or self == player or self.players.include?(player)
+  end
+
+  def can_assign_cards_for(player)
+    self.is_admin? or self.players.include?(player)
   end
 
 end

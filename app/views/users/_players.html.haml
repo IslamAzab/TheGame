@@ -1,39 +1,41 @@
 - players = @user.players
-%p
-  Number of players:
-  = players.count
-%table.table-striped
-  %tr
-    %th Name
-    %th Title
-    %th Average score
-    %th Top score
-    %th Top score date
-    - if is_team
+- if players.count > 0
+  %b= "#{@user.short_name} coaches #{pluralize(players.count, 'player')}"
+  %table.table-striped
+    %tr
+      %th Name
+      %th Title
+      %th Average score
+      %th Top score
+      %th Top score date
       %th
-    - players.each do |p|
-      %tr
-        %td= link_to p.full_name, show_game_path(p)
-        %td= p.title
-        %td= p.average_score
-        %td= p.top_score
-        %td= l p.top_score_date, :format => :long
-        - if is_team
+      - players.each do |p|
+        %tr
           %td
-            / Button to trigger modal
-            = link_to 'Scoring cards modal', {},{"data-toggle" => "modal", :href => "#Modal_#{p.id}", :role => "button"}
+            - if current_user.can_show_games_of p
+              = link_to p.full_name, show_game_path(p)
+            - else
+              = p.full_name
+          %td= p.title
+          %td= p.average_score
+          %td= p.top_score
+          %td= l(p.top_score_date, :format => :long) if p.top_score_date
+          %td
+            - if current_user.can_assign_cards_for p
+              / Button to trigger modal
+              = link_to 'Scoring cards modal', {},{"data-toggle" => "modal", :href => "#Modal_#{p.id}", :role => "button"}
 
-            / Modal
-            .modal.hide.fade{ :id => "Modal_#{p.id}","aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-              .modal-header
-                = button_tag '',{:class => "close","aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} do
-                  %i.icon-remove
-                %h3#myModalLabel
-                  Show of scoring cards for player :
-                  = p.full_name
-              .modal-body
-                %p
-                  = render 'popup_cards',:player => p
-              .modal-footer
-                %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
-                %button.btn.btn-primary{:id => 'modal_submit'} Save
+              / Modal
+              .modal.hide.fade{ :id => "Modal_#{p.id}","aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+                .modal-header
+                  = button_tag '',{:class => "close","aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} do
+                    %i.icon-remove
+                  %h3#myModalLabel
+                    Show of scoring cards for player :
+                    = p.full_name
+                .modal-body
+                  %p
+                    = render 'team/popup_cards',:player => p
+                .modal-footer
+                  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
+                  %button.btn.btn-primary{:id => 'modal_submit'} Save

@@ -1,7 +1,1 @@
-%h3
-  Players coached by
-  = @user.full_name
-- if @user.players.any?
-  %p
-    %b Players:
-    = render 'users/players', :is_team => true
+= render 'users/players'

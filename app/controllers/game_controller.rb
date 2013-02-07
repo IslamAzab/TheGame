@@ -1,7 +1,7 @@
 class GameController < ApplicationController
   before_filter :has_access_rights
 
-  # GET /game/:id
+  # GET /game/(:id)
   def index
     
     @user = User.find(params[:id] || current_user.id)
@@ -47,12 +47,15 @@ class GameController < ApplicationController
   end
 
   def has_access_rights
-      player = User.find(params[:id])
-      if !(current_user.is_admin? or current_user == player or
-       current_user.players.include?(player))
-        redirect_to root_url ,
-         :notice => "You don't have privileage to access this page" 
-      end
+      
+    player = User.find(params[:id] || current_user.id)
+
+    unless(current_user.can_show_games_of player)
+      redirect_to root_url ,
+       :notice => "You don't have privileage to access this page" 
+    end
+
   end
+  
 end
 

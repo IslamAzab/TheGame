@@ -25,7 +25,7 @@
         %td
       %td= user.average_score
       %td= user.top_score
-      %td= l user.top_score_date, :format => :long
+      %td= l(user.top_score_date, :format => :long) if user.top_score_date
       %td= link_to 'Show', user, :class => "btn btn-link"
       %td= link_to 'Edit', edit_user_path(user), :class => "btn btn-link"
       %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-link"

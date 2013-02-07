@@ -29,7 +29,7 @@ class TeamController < ApplicationController
   protected
     def require_coach
       if current_user.players.blank?
-        redirect_to root_url , :notice => "You are not a coach !"
+        redirect_to root_path , :notice => "You are not a coach !"
       end      
     end
 end

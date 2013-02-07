@@ -1,8 +1,7 @@
 / %p#notice= notice
 
-= image_tag @user.avatar.url(:thumb)
-- 2.times do 
-  %br/
+= image_tag @user.avatar.url(:thumb), :class => 'margin'
+
 %p
   %b User name:
   = @user.username
@@ -21,15 +20,15 @@
 %p
   %b Top Score:
   = @user.top_score
-  %b achieved at
-  =   l @user.top_score_date, :format => :long
+  %b achieved on
+  = l(@user.top_score_date, :format => :long) if @user.top_score_date
   
 - if @user.coach
   %p
     %b Coach name:
     = @user.coach_name
-- if @user.players.any?
-  = render 'players', :is_team => false
+
+= render 'players'
 
 
 = link_to 'Edit', edit_user_path(@user), :class => "btn btn-link"
