@@ -22,8 +22,8 @@
   %b Top Score:
   = @user.top_score
   %b achieved on
-  = l(@user.top_score_date, :format => :long) if @user.top_score_date
-  
+  = @user.top_score_date_long_format
+
 %p
   %b Coach name:
   = @user.coach_name || 'not assigned'

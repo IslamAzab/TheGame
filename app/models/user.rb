@@ -61,12 +61,16 @@ class User < ActiveRecord::Base
     self.top_score_date = Date.today if self.top_score_changed?
   end
 
-  def can_show_games_of(player)
+  def can_access_games_of(player)
    self.is_admin? or self == player or self.players.include?(player)
   end
 
   def can_assign_cards_for(player)
     self.is_admin? or self.players.include?(player)
+  end
+
+  def top_score_date_long_format
+    I18n.l(self.top_score_date, :format => :long) if self.top_score_date
   end
 
 end

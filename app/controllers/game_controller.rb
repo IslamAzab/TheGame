@@ -50,7 +50,7 @@ class GameController < ApplicationController
       
     player = User.find(params[:id] || current_user.id)
 
-    unless(current_user.can_show_games_of player)
+    unless(current_user.can_access_games_of player)
       redirect_to root_url ,
        :notice => "You don't have privileage to access this page" 
     end

@@ -12,14 +12,14 @@
       - players.each do |p|
         %tr
           %td
-            - if current_user.can_show_games_of p
+            - if current_user.can_access_games_of p
               = link_to p.full_name, show_game_path(p)
             - else
               = p.full_name
           %td= p.title
           %td= p.average_score
           %td= p.top_score
-          %td= l(p.top_score_date, :format => :long) if p.top_score_date
+          %td= p.top_score_date_long_format
           %td
             - if current_user.can_assign_cards_for p
               / Button to trigger modal
