@@ -33,9 +33,8 @@
                   %h3#myModalLabel
                     Show of scoring cards for player :
                     = p.full_name
-                .modal-body
-                  %p
-                    = render 'team/popup_cards',:player => p
+                .modal-body{:id => "scoring_cards_#{p.id}"}
+                  = render 'team/popup_cards',:player => p
                 .modal-footer
                   %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
                   %button.btn.btn-primary{:id => 'modal_submit'} Save

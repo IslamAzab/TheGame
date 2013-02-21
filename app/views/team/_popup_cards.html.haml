@@ -1,15 +1,19 @@
-
 %div{:id => "scoring_cards_errors_#{player.id}"}
+
 = nested_form_for player, :url => update_player_scoring_cards_path(player.id), :remote => true, :method => :put do |f|
+
   - if player.errors.any?
     = render 'team/errors', :object => player
+
   %table{:style => "#{'display: none' if player.scoring_cards.blank?}"}
     %tr
       %th Title
       %th Score
       %th Active?
       %th Remove?
+
     = f.fields_for :scoring_cards, :wrapper => false do |scoring_cards_form|
       = render 'team/score_cards', :f => scoring_cards_form
+
   = f.link_to_add "Add a scoring card", :scoring_cards
 
