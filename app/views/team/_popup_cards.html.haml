@@ -1,6 +1,4 @@
-%h1
-  Show of scoring cards for player : 
-  = player.full_name
+
 %div{:id => "scoring_cards_errors_#{player.id}"}
 = nested_form_for player, :url => update_player_scoring_cards_path(player.id), :remote => true, :method => :put do |f|
   - if player.errors.any?
