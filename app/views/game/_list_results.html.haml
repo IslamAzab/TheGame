@@ -5,17 +5,22 @@
   %tr
     %th 
     %th Total
-    - @scoring_cards.each do |sc|
+    - @active_cards.each do |sc|
       %th= "#{sc.title}##{sc.score}"
+    - @inactive_cards.each do |sc|
+      %th.disabled= "#{sc.title}##{sc.score}"
   - (start_day..end_day).each do |day|
     %tr
       %th= l day, :format => :long
       %td{:id => "total_score_of_#{day}"}
         %strong= @user.day_games.find_by_date(day).try(:score)
-      - @scoring_cards.each do |sc|
+      - @active_cards.each do |sc|
         - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first
         %td
           - values = {:comment => result.try(:comment), :score => result.try(:score)}
           - jsParams = {:scoring_card_id => sc.id, :date => day}
           %span.editable.result_score{:data => {:type => 'result', :'original-title' => "Enter new score :", :url => update_game_path(@user), :params => jsParams.to_json, :value => values.to_json}}
             = result.try(:score) || '-'
+      - @inactive_cards.each do |sc|
+        - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first
+        %td.disabled= result.try(:score)

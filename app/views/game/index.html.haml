@@ -1,5 +1,15 @@
 %h1#h1= "#{@user.full_name} Results"
 
+%div
+  %strong Average Score: 
+  = @user.average_score
+
+%div
+  %strong Top Score: 
+  = @user.top_score
+  %strong Achieved on:
+  = @user.top_score_date_long_format
+
 = select_tag '', options_for_select(periods), :id => 'period_selector', :class => "selectpicker", :player_id => @user.id
 
 #date

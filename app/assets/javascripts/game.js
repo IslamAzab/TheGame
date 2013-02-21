@@ -8,7 +8,7 @@ $(function(){
         ajaxOptions: {
           type: 'put'
         },
-        placement: 'right',
+        placement: 'bottom',
         clear: false
       }
     );    

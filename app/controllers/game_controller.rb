@@ -5,7 +5,11 @@ class GameController < ApplicationController
   def index
     
     @user = User.find(params[:id] || current_user.id)
-    @scoring_cards = @user.scoring_cards.active_cards
+    scoring_cards = @user.scoring_cards.order("active DESC")
+    i = scoring_cards.index{|c| c.active == false } || scoring_cards.size
+    @active_cards = scoring_cards[0...i]
+    @inactive_cards = scoring_cards[i...scoring_cards.size] 
+
     today = Date.today
 
     @start_day = params[:start_day].nil? ? today :
