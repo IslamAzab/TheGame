@@ -23,7 +23,7 @@
           %td
             - if current_user.can_assign_cards_for p
               / Button to trigger modal
-              = link_to 'Scoring cards modal', {},{"data-toggle" => "modal", :href => "#Modal_#{p.id}", :role => "button"}
+              = link_to 'Scoring cards', {},{"data-toggle" => "modal", :href => "#Modal_#{p.id}", :role => "button"}
 
               / Modal
               .modal.hide.fade{ :id => "Modal_#{p.id}","aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
