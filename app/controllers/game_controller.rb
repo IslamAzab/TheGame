@@ -50,6 +50,11 @@ class GameController < ApplicationController
     end    
   end
 
+  def result_history
+    player = User.find(params[:id] || current_user.id)
+    @result = player.results.find(params[:result_id])
+  end
+
   def has_access_rights
       
     player = User.find(params[:id] || current_user.id)
@@ -59,6 +64,10 @@ class GameController < ApplicationController
        :notice => "You don't have privileage to access this page" 
     end
 
+  end
+
+  def user_for_paper_trail
+    current_user.try :full_name
   end
   
 end

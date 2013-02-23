@@ -1,7 +1,10 @@
 class Result < ActiveRecord::Base
   attr_accessible :date, :score, :scoring_card_id, :comment
+
   belongs_to :scoring_card
   
+  has_paper_trail
+
   validates :score, :numericality => true
 
   after_save :update_day_game
