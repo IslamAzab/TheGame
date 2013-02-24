@@ -22,7 +22,7 @@
           %span.editable.result_score{:data => {:type => 'result', :'original-title' => "Enter new score :", :url => update_game_path(@user), :params => jsParams.to_json, :value => values.to_json}}
             = result.try(:score) || '-'
           - if result  
-            = link_to result_history_path(:id => result.user_id, :result_id => result.id) do
+            = link_to result_history_path(:id => result.user_id, :result_id => result.id), :remote => true do
               %i.icon-list-alt.icon-black
       - @inactive_cards.each do |sc|
         - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first

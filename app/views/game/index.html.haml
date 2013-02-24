@@ -19,3 +19,10 @@
     %i{:class => "icon-share-alt icon-white"}	
 
 = render 'list_results', :start_day => @start_day, :end_day => @end_day
+
+.modal.hide.fade{'aria-hidden' => true, :role => 'dialog', :tabindex => "-1"}
+  .modal-header
+    = button_tag '',{:class => "close",'aria-hidden' => true, 'data-dismiss' => 'modal', :type => 'button'} do
+      %i.icon-remove
+    %h3#title
+  .modal-body

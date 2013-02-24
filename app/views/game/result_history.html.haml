@@ -1,5 +1,0 @@
-%ul
-  - versions = @result.versions
-  - versions.each do |version|
-    - attrs = PaperTrail.serializer.load(versions[1+version.index].try(:object) ||"") || @result
-    %li#left-align="#{version.whodunnit} #{version.event}d the result with score #{attrs['score']} and comment #{attrs['comment']}"
