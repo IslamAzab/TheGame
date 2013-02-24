@@ -6,9 +6,13 @@
     %th 
     %th Total
     - @active_cards.each do |sc|
-      %th= "#{sc.title}##{sc.score}"
+      %th
+        = image_tag sc.avatar.url(:thumb)
+        = "#{sc.title}##{sc.score}"
     - @inactive_cards.each do |sc|
-      %th.disabled= "#{sc.title}##{sc.score}"
+      %th.disabled
+        = image_tag sc.avatar.url(:thumb)
+        = "#{sc.title}##{sc.score}"
   - (start_day..end_day).each do |day|
     %tr
       %th= l day, :format => :long

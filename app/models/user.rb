@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :top_score_date
   attr_accessible :avatar
   has_attached_file :avatar,:styles =>{ :medium => "300x300>", :thumb => "32x32>" },
-  :default_url => "/system/avatars/missing/:style/missing.jpg"
+  :default_url => "/images/:style/missing_user_avatar.jpg"
 
   # Validation
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
