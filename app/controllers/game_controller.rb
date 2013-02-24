@@ -50,11 +50,10 @@ class GameController < ApplicationController
     end    
   end
 
+  # get /game/(:id)/result/:result_id
   def result_history
-
     player = User.find(params[:id] || current_user.id)
     @result = player.results.find(params[:result_id])
-    
   end
 
   def has_access_rights

@@ -3,7 +3,6 @@ var modalBody = $(".modal-body")
 
 if( ($(modalBody).attr("id")) != "#{@result.id}" ){
 $(modalBody).attr("id","#{@result.id}")
-$(".modal-header #title").html("Result History")
 $(modalBody).html("#{escape_javascript(render 'list_result_history', :result => @result)}")
 }
 
