@@ -39,7 +39,7 @@ td
 
 th
 {
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
@@ -65,4 +65,9 @@ img.margin
 
 #left-align {
   text-align: left;
+}
+
+.scrollable {
+  max-height: 350px;
+  overflow: auto
 }
