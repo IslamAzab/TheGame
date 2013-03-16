@@ -5,10 +5,8 @@ class GameController < ApplicationController
   def index
     
     @user = User.find(params[:id] || current_user.id)
-    scoring_cards = @user.scoring_cards.order("active DESC")
-    i = scoring_cards.index{|c| c.active == false } || scoring_cards.size
-    @active_cards = scoring_cards[0...i]
-    @inactive_cards = scoring_cards[i...scoring_cards.size] 
+    @active_cards = @user.scoring_cards.active_cards
+    @inactive_cards = @user.scoring_cards.inactive_cards
 
     today = Date.today
 
@@ -18,6 +16,11 @@ class GameController < ApplicationController
     @end_day = params[:end_day].nil? ? today :
      Date.strptime(params[:end_day], '%d-%m-%Y')
 
+    @day_games = @user.day_games.where(:date => @start_day .. @end_day).
+      select([:date, :score])
+
+    @results = @user.results.where(:date => @start_day .. @end_day)
+    
     respond_to do |format|
       format.js
       format.html

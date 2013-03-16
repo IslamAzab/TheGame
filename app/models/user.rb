@@ -22,10 +22,9 @@ class User < ActiveRecord::Base
   belongs_to :coach, :class_name => "User"
   has_many :players, :foreign_key => :coach_id, :class_name => "User"
 
-  # Player has many scoring_cards
   has_many :scoring_cards, :dependent => :destroy
   has_many :day_games, :dependent => :destroy
-  has_many :results
+  has_many :results, :dependent => :destroy
   accepts_nested_attributes_for :scoring_cards, :allow_destroy => true
 
   before_save :update_top_score_date
@@ -35,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    "#{self.first_name} #{self.last_name}"    
+    "#{self.first_name} #{self.last_name}".blank? ? self.username : "#{self.first_name} #{self.last_name}"
   end
 
   def short_name

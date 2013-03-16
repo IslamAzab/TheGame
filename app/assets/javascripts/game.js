@@ -64,7 +64,7 @@ function displayResult(){
 }
 
 /**
-compares two date and return true if start date < end date where the date format is dd-mm-yyyy
+compares two dates with format (dd-mm-yyyy) and return true if start date < end date
 */
 function isSmaller(start, end){
   var sParts = start.split("-");

@@ -31,6 +31,6 @@
     = f.file_field :avatar
   .field
     = f.label :coach_id
-    = f.collection_select :coach_id, User.select([:id, :first_name, :last_name]), :id, :full_name , :prompt => true, :include_blank => '' 
+    = f.collection_select :coach_id, User.select([:id, :first_name, :last_name, :username]), :id, :full_name ,:include_blank => 'choose coach' 
   .actions
     = f.submit 'Save', :class => "btn btn-primary"

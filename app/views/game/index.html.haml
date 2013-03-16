@@ -13,16 +13,16 @@
 = select_tag '', options_for_select(periods), :id => 'period_selector', :class => "selectpicker", :player_id => @user.id
 
 #date
-  = text_field_tag 'from_date', @start_day.strftime('%d-%m-%y'), :class => 'datePicker'
-  = text_field_tag 'to_date', @end_day.strftime('%d-%m-%y'), :class => 'datePicker'
-  %a{:class => "btn btn-primary btn-small", :onclick => "displayResult()" } 
-    %i{:class => "icon-share-alt icon-white"}	
+  = text_field_tag 'from_date', @start_day.strftime('%d-%m-%Y'), :class => 'datePicker', :readonly => true
+  = text_field_tag 'to_date', @end_day.strftime('%d-%m-%Y'), :class => 'datePicker', :readonly => true
+  %a.btn.btn-primary.btn-small{:onclick => "displayResult()" } 
+    %i.icon-share-alt.icon-white
 
 = render 'list_results', :start_day => @start_day, :end_day => @end_day
 
 .modal.hide.fade{'aria-hidden' => true, :role => 'dialog', :tabindex => "-1"}
   .modal-header
-    %i.icon-remove{:class => "close",'aria-hidden' => true, 'data-dismiss' => 'modal', :type => 'button'}
-      
+    %i.icon-remove.close{'aria-hidden' => true, 'data-dismiss' => 'modal', :type => 'button'}
     %h3#title Result History
+
   .modal-body
