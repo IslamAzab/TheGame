@@ -75,15 +75,20 @@ function isSmaller(start, end){
 }
 
 function alignHeaderAndBody(){
-  var header = $("thead").children().first();
-  var rows = $("tbody").children();
-  
-  header.children().first().width(rows.first().children().first().width());
 
-  rows.each(function(index, row){
-    $(row).children().each(function(i, td) {
-     $(td).width($(header.children().get(i)).width());
-   });
+  var headers = $("thead tr:first").children();
+  var data = $("tbody tr:first").children();
+
+  $(data).each(function(i, td) {
+
+    var rowWidth = $(td).width();
+    var headerWidth = $(headers.get(i)).width();
+
+    if( rowWidth > headerWidth) {
+      $(headers.get(i)).width(rowWidth);
+    }else {
+      $(td).width(headerWidth);
+    }
+
   });
-
 }

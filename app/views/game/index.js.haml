@@ -1,1 +1,5 @@
+function renderResultTable(callback){
 $("#results_table").html("#{escape_javascript(render 'list_results', :start_day => @start_day, :end_day => @end_day)}")
+callback();
+}
+renderResultTable(alignHeaderAndBody);

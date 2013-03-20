@@ -31,5 +31,7 @@
                 %i.icon-list-alt.icon-black
         - @inactive_cards.each do |sc|
           %td.disabled= @results.select{|r| r.scoring_card_id == sc.id && r.date == day}.first.try :score
-  :javascript
+:javascript
+  $(window).load(function(){
     alignHeaderAndBody();
+  });

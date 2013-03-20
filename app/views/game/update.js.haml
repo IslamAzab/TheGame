@@ -1,1 +1,5 @@
-$("#total_score_of_#{@date}").html("<strong>#{@total_score}</strong>")
+function setTotalScore(callback){
+$("#total_score_of_#{@date}").html("<strong>#{@total_score}</strong>");
+callback();
+}
+setTotalScore(alignHeaderAndBody);
