@@ -45,7 +45,7 @@ th
 
 body .modal
 {
-  width: 700px;
+  width: 900px;
 }
 
 img.margin
@@ -67,7 +67,12 @@ img.margin
   text-align: left;
 }
 
-.scrollable {
+table.scrollable {
+  display: block;
+}
+
+table.scrollable tbody {
   max-height: 350px;
-  overflow: auto
+  overflow-y: auto;
+  display: block;
 }

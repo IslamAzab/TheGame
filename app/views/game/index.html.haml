@@ -18,7 +18,8 @@
   %a.btn.btn-primary.btn-small{:onclick => "displayResult()" } 
     %i.icon-share-alt.icon-white
 
-= render 'list_results', :start_day => @start_day, :end_day => @end_day
+#results_table
+  = render 'list_results', :start_day => @start_day, :end_day => @end_day
 
 .modal.hide.fade{'aria-hidden' => true, :role => 'dialog', :tabindex => "-1"}
   .modal-header

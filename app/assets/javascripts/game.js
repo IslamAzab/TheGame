@@ -31,6 +31,7 @@ $(function(){
   });
 
   $('.selectpicker').selectpicker();
+  
 });
 
 /**
@@ -71,4 +72,15 @@ function isSmaller(start, end){
   var eParts = end.split("-");
   var result = sParts[2] == eParts[2] ? sParts[1] == eParts[1] ? sParts[0] == eParts[0] ? false : sParts[0] < eParts[0] : sParts[1] < eParts[1]  : sParts[2] < eParts[2] 
   return result
+}
+
+function alignHeaderAndBody(){
+  var header = $("thead").children().first();
+  var rows = $("tbody").children();
+  header.children().first().width(rows.first().children().first().width());
+  rows.each(function(index, row){
+    $(row).children().each(function(i, td) {
+     $(td).width($(header.children().get(i)).width());
+   });
+  })
 }

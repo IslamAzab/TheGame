@@ -19,17 +19,6 @@
 //= require_tree .
 //= require jquery_nested_form
 
-// function remove_fields(link) {
-//   $(link).prev("input[type=hidden]").val("1");
-//   $(link).parent().parent().hide();
-// }
-
-// function add_fields(link, association, content) {
-//   var new_id = new Date().getTime();
-//   var regexp = new RegExp("new_" + association, "g");
-//   $('[style = "display: none"]').show();
-//   $(link).siblings("table").children("tbody").append(content.replace(regexp, new_id));
-// }
 
 jQuery(function ($) {
     //override nested_form insertFields to work with table
