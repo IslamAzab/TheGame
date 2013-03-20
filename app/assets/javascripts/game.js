@@ -77,10 +77,13 @@ function isSmaller(start, end){
 function alignHeaderAndBody(){
   var header = $("thead").children().first();
   var rows = $("tbody").children();
+  
   header.children().first().width(rows.first().children().first().width());
+
   rows.each(function(index, row){
     $(row).children().each(function(i, td) {
      $(td).width($(header.children().get(i)).width());
    });
-  })
+  });
+
 }
