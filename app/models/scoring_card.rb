@@ -12,4 +12,5 @@ class ScoringCard < ActiveRecord::Base
   validates :title, :presence => true
 
   scope :active_cards, where(:active => true)
+  scope :inactive_cards, where(:active => false)
 end

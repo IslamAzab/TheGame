@@ -1,33 +1,33 @@
 - require 'json'
-- last_editable_day = [end_day, Date.today].min
-
-%table#results_table
-  %tr
-    %th 
-    %th Total
-    - @active_cards.each do |sc|
-      %th
-        = image_tag sc.avatar.url(:thumb)
-        = "#{sc.title}##{sc.score}"
-    - @inactive_cards.each do |sc|
-      %th.disabled
-        = image_tag sc.avatar.url(:thumb)
-        = "#{sc.title}##{sc.score}"
-  - (start_day..end_day).each do |day|
+#results_table
+  %table
     %tr
-      %th= l day, :format => :long
-      %td{:id => "total_score_of_#{day}"}
-        %strong= @user.day_games.find_by_date(day).try(:score)
+      %th.span2
+      %th.span2 Total
       - @active_cards.each do |sc|
-        - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first
-        %td
-          - values = {:comment => result.try(:comment), :score => result.try(:score)}
-          - jsParams = {:scoring_card_id => sc.id, :date => day}
-          %span.editable.result_score{:data => {:type => 'result', :'original-title' => "Enter new score :", :url => update_game_path(@user), :params => jsParams.to_json, :value => values.to_json}}
-            = result.try(:score) || '-'
-          - if result  
-            = link_to result_history_path(:id => result.user_id, :result_id => result.id), :remote => true do
-              %i.icon-list-alt.icon-black
+        %th.span2
+          = image_tag sc.avatar.url(:thumb)
+          = "#{sc.title}##{sc.score}"
       - @inactive_cards.each do |sc|
-        - result = @user.results.where(:scoring_card_id => sc.id , :date => day).first
-        %td.disabled= result.try(:score)
+        %th.span2.disabled
+          = image_tag sc.avatar.url(:thumb)
+          = "#{sc.title}##{sc.score}"
+  .scrollable
+    %table
+      - (start_day..end_day).each do |day|
+        %tr
+          %th.span2= l day, :format => :long
+          %td.span2{:id => "total_score_of_#{day}"}
+            %strong= @day_games.select{|g| g.date == day}.first.try(:score)
+          - @active_cards.each do |sc|
+            - result = @results.select{|r| r.scoring_card_id == sc.id && r.date == day}.first
+            - values = {:comment => result.try(:comment), :score => result.try(:score)}
+            - jsParams = {:scoring_card_id => sc.id, :date => day}
+            %td.span2
+              %span.editable.result_score{:data => {:type => 'result', 'original-title' => "Enter new score", :url => update_game_path(@user), :params => jsParams.to_json, :value => values.to_json}}
+                = result.try(:score) || '?'
+              - if result
+                = link_to result_history_path(:id => result.user_id, :result_id => result.id), :remote => true do
+                  %i.icon-list-alt.icon-black
+          - @inactive_cards.each do |sc|
+            %td.span2.disabled= @results.select{|r| r.scoring_card_id == sc.id && r.date == day}.first.try :score
