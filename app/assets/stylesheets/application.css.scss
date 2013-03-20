@@ -45,7 +45,8 @@ th
 
 body .modal
 {
-  width: 900px;
+  min-width: 600px;
+  width: auto;
 }
 
 img.margin
