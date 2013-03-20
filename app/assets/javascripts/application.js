@@ -28,19 +28,29 @@ jQuery(function ($) {
       $(link).siblings("[style='display: none']").show();
       return $(content).appendTo($table);
     }
+
+    $('.modal').on('shown', function(e) {
+     var modal = $(this);
+
+     modal.css('margin-top', (modal.outerHeight() / 2) * -1)
+          .css('margin-left', (modal.outerWidth() / 2) * -1);
+
+     return this;
+    });
+
+    $('#modal_submit').on('click', function(e){
+      var modal = $(this).parents('.modal');
+      var form = $(modal).children('.modal-body').children('form');
+      $(form).submit();
+      $(modal).modal('hide');
+      return true;
+    });
+
   });
 
 function popUp (link) {
   $(link).popover('toggle');
 }
-
-$('#modal_submit').live('click', function(){
-  var modal = $(this).parents('.modal');
-  var form = $(modal).children('.modal-body').children('form');
-  $(form).submit();
-  $(modal).modal('hide');
-  return true;
-});
 
 $(function(){
   $('.datePicker').datepicker({

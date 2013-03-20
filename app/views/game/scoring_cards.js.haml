@@ -1,0 +1,11 @@
+var modal = $(".modal");
+var title = $(".modal-header #title");
+var modalBody = $(".modal-body");
+
+if( ($(modalBody).attr("id")) != "#{@player.id}" ){
+$(modalBody).attr("id","#{@player.id}")
+$(title).html("Scoring cards of : #{@player.full_name}")
+$(modalBody).html("#{escape_javascript(render('team/popup_cards',:player => @player))}")
+}
+
+$(modal).modal("show")
