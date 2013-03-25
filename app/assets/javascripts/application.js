@@ -23,10 +23,8 @@
 jQuery(function ($) {
     //override nested_form insertFields to work with table
     window.NestedFormEvents.prototype.insertFields = function (content, assoc, link) {
-      var $table = $(link).siblings('table');
-      // Show the table and save button if player has no cards
-      $(link).siblings("[style='display: none']").show();
-      return $(content).appendTo($table);
+      var $cards = $(link).siblings('.scoring-cards');
+      return $(content).appendTo($cards);
     }
 
     $('.modal').on('shown', function(e) {

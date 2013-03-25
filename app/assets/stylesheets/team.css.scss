@@ -1,3 +1,48 @@
 // Place all the styles related to the Team controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.alert-info {
+	height: 200px;
+}
+.alert-info .avatar {
+	display: inline;
+	float: left;
+	height: 100%;
+	margin-right: 5%;
+	width: 25%;
+}
+
+.alert-info .avatar img {
+	height: 70%;
+}
+.alert-info .avatar input{
+	height: 30%;
+}
+
+.alert-info .right {
+  display: inline;
+	float: right;
+}
+
+.alert-info .right .active {margin-top: 50%;}
+.alert-info .right .active label{	display: inline; }
+
+
+.card-fields {
+	display: inline;
+	float: left;
+	width: 60%;
+}
+
+.card-fields .description textarea{
+	width: 500px;
+}
+
+.card-fields .title{
+
+}
+
+.card-fields .score{
+	
+}

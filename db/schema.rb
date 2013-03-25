@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224093502) do
+ActiveRecord::Schema.define(:version => 20130325165847) do
 
   create_table "day_games", :force => true do |t|
     t.integer  "score",      :default => 0
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130224093502) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "description",         :default => ""
   end
 
   create_table "users", :force => true do |t|

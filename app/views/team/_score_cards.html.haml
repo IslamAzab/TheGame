@@ -1,6 +1,13 @@
-%tr.fields
-  %td= f.text_field :title
-  %td= f.text_field :score
-  %td= f.file_field :avatar
-  %td= f.check_box :active
-  %td= f.link_to_remove "remove"
+.alert.alert-info
+  .right
+    .remove-link= f.link_to_remove image_tag "remove.png"
+    .active
+      = f.check_box :active
+      = f.label :active
+  .avatar
+    = image_tag f.object.avatar.url(:medium)
+    = f.file_field :avatar
+  .card-fields
+    .title= f.text_field :title, :placeholder => "title"
+    .score= f.text_field :score, :placeholder => "score"
+    .description= f.text_area :description, :rows => 5, :placeholder => "description"

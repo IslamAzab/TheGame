@@ -4,15 +4,8 @@
 
   - if player.errors.any?
     = render 'team/errors', :object => player
-
-  %table{:style => "#{'display: none' if player.scoring_cards.blank?}"}
-    %tr
-      %th Title
-      %th Score
-      %th Avatar
-      %th Active?
-      %th Remove?
-
+  
+  .scoring-cards
     = f.fields_for :scoring_cards, :wrapper => false do |scoring_cards_form|
       = render 'team/score_cards', :f => scoring_cards_form
 

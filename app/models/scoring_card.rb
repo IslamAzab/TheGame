@@ -8,7 +8,7 @@ class ScoringCard < ActiveRecord::Base
   before_destroy :ensure_not_played
   has_many :results, :dependent => :nullify
 
-  attr_accessible :active, :score, :title, :avatar
+  attr_accessible :active, :score, :title, :avatar, :description
 
   has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "50x50>" },
    :default_url => "/images/:style/missing_card_avatar.jpg"
