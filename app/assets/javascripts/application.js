@@ -22,7 +22,7 @@
 jQuery(function ($) {
     $('.remove_nested_fields').live('click', function(e){
       if("scoring_cards" == $(this).data('association')){
-        $(this).parents(".scoring_cards_fields").hide();
+        $(this).parents(".scoring_cards_fields").fadeOut('slow');
       }
       return this;
     });

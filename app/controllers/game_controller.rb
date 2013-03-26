@@ -43,6 +43,7 @@ class GameController < ApplicationController
     
     result.score = params[:value][:score]
     result.comment = params[:value][:comment]
+    result.whodunnit = current_user
     result.save
 
     respond_to do |format|

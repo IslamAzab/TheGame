@@ -23,10 +23,9 @@ class ScoringCard < ActiveRecord::Base
 
   def ensure_not_played
     if self.results.any?
-      self.errors.add(:base, "Cannot delete #{self.title}, #{self.user.full_name} already played with it.")
-      return false
-    else
-      return true
+      self.errors.add(:base, "Cannot delete #{self.title}, #{self.user.full_name} already played with this card.")
+      false
     end
   end
+
 end
