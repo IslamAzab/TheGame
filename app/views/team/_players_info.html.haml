@@ -1,0 +1,37 @@
+- if @players.any?
+  %table.table-striped
+    %tr
+      %th Name
+      %th Title
+      %th Total score
+      %th Average score
+      %th Top score
+      %th
+      - @players.each do |p|
+        %tr
+          %td
+            - if current_user.can_access_games_of p
+              = link_to p.full_name, show_game_path(p)
+            - else
+              = p.full_name
+          %td= p.title
+          - scores = @day_games.select{|r| r.user_id == p.id}.map(&:score)
+          %td= scores.sum
+          %td= scores.avg
+          %td= scores.max
+          %td
+            - if current_user.can_assign_cards_for p
+              / Button to trigger modal
+              = link_to 'Scoring cards', user_scoring_cards_path(p), :remote => true 
+
+  / Modal
+  .modal.hide.fade{'aria-hidden' => true, :role => 'dialog', :tabindex => '-1'}
+    .modal-header
+      %i.icon-remove.close{'aria-hidden' => true, 'data-dismiss' => 'modal', :type => 'button'}
+      %h3#title
+        
+    .modal-body
+
+    .modal-footer
+      %button.btn{'aria-hidden' => true, 'data-dismiss' => 'modal'} Cancel
+      %button.btn.btn-primary{:id => 'modal_submit'} Save

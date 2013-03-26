@@ -3,7 +3,21 @@ class TeamController < ApplicationController
 
   # GET /team
   def index
-    @user = current_user     
+    @user = current_user
+    @players = @user.players
+
+    @month = 
+      if params[:month]
+        Date.strptime(params[:month], '%d-%m-%Y')
+      else 
+        Date.today
+      end
+
+    start_day = @month.beginning_of_month
+    end_day = @month.end_of_month
+
+    @day_games = DayGame.where(:user_id => @players.map(&:id),
+      :date => start_day .. end_day)
   end
 
   # GET /team/:id/scoring_cards
