@@ -6,10 +6,12 @@
       %th Total
       - @active_cards.each do |sc|
         %th
+          = image_tag sc.avatar.url(:thumb), :class => 'tooltip', :data=>{'original-title' => "description: #{sc.description}"}
           = image_tag sc.avatar.url(:thumb)
           = "#{sc.title}##{sc.score}"
       - @inactive_cards.each do |sc|
         %th.disabled
+          = image_tag sc.avatar.url(:thumb), :class => 'tooltip', :data=>{'original-title' => "description: #{sc.description}"}
           = image_tag sc.avatar.url(:thumb)
           = "#{sc.title}##{sc.score}"
   

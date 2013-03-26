@@ -19,13 +19,13 @@
 //= require_tree .
 //= require jquery_nested_form
 
-
 jQuery(function ($) {
-    //override nested_form insertFields to work with table
-    window.NestedFormEvents.prototype.insertFields = function (content, assoc, link) {
-      var $cards = $(link).siblings('.scoring-cards');
-      return $(content).appendTo($cards);
-    }
+    $('.remove_nested_fields').live('click', function(e){
+      if("scoring_cards" == $(this).data('association')){
+        $(this).parents(".scoring_cards_fields").hide();
+      }
+      return this;
+    });
 
     $('.modal').on('shown', function(e) {
      var modal = $(this);
@@ -44,6 +44,8 @@ jQuery(function ($) {
       return true;
     });
 
+
+
   });
 
 function popUp (link) {
@@ -54,4 +56,6 @@ $(function(){
   $('.datePicker').datepicker({
     dateFormat: 'dd-mm-yy'
   });
+
+  $('.tooltip').tooltip();
 });
