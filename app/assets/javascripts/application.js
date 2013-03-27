@@ -27,7 +27,7 @@ jQuery(function ($) {
       return this;
     });
 
-    $('.modal').on('shown', function(e) {
+    $('.modal').on('show', function(e) {
      var modal = $(this);
 
      modal.css('margin-top', (modal.outerHeight() / 2) * -1)
