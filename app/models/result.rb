@@ -4,7 +4,7 @@ class Result < ActiveRecord::Base
   belongs_to :scoring_card
   belongs_to :user
   
-  has_paper_trail
+  has_paper_trail :only => [:score, :comment]
 
   validates :score, :numericality => true
 

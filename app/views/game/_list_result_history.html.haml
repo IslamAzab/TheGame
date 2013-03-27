@@ -1,7 +1,8 @@
 %ul
-  - versions = result.versions
-  - versions.each_with_index do |version, index|
-    / every version holds the state before entering this version, so to get the state during this version we have to fetch it from next version, in case of the last version, the state is the result state (live state)
-    - state = version.equal?(versions.last) ? result : PaperTrail.serializer.load(versions[1+index].object)
+  - result.versions.each do |version|
+    - updates = []
+    - version.changeset.each do |attribute, values|
+      - from = values[0] ? "from '#{values[0]}' " : ''
+      - updates << "#{attribute} #{from}to '#{values[1]}'"
 
-    %li#left-align="#{version.whodunnit} #{version.event}d the result with score #{state['score']} and comment '#{state['comment']}' at #{version.created_at.strftime("%d-%m-%Y %I:%M:%S %p")}."
+    %li#left-align= "#{version.whodunnit} changed #{updates.join(' and ')}."
