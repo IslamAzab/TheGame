@@ -22,12 +22,14 @@
 jQuery(function ($) {
     $('.remove_nested_fields').live('click', function(e){
       if("scoring_cards" == $(this).data('association')){
-        $(this).parents(".scoring_cards_fields").fadeOut('slow');
+        $(this).parents(".scoring_cards_fields").fadeOut('slow',function(){
+          $(this).parents(".modal").trigger("FadeOut")
+        });
       }
       return this;
     });
 
-    $('.modal').on('show', function(e) {
+    $('.modal').on('show DOMNodeInserted DOMNodeRemoved FadeOut', function(e) {
      var modal = $(this);
 
      modal.css('margin-top', (modal.outerHeight() / 2) * -1)
