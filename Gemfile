@@ -28,3 +28,6 @@ gem 'jquery-ui-rails'
 gem 'paper_trail', '~> 2'
 
 gem 'remotipart', '~> 1.0'
+
+gem 'execjs'
+gem 'therubyracer'
