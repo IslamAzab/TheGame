@@ -11,8 +11,8 @@ Game::Application.configure do
 		port:	587,
 		domain:	"domain.of.sender.net",
 		authentication: "plain",
-		user_name: "game.badrit@gmail.com",
-		password: "badrit_secret",
+		user_name: "email@example.com",
+		password: "secret",
 		enable_starttls_auto: true
 	}
 end
