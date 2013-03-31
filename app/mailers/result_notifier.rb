@@ -1,5 +1,5 @@
 class ResultNotifier < ActionMailer::Base
-  default from: "email@example.com"
+  default from: "'hrs' <email@example.com>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -13,6 +13,6 @@ class ResultNotifier < ActionMailer::Base
     @scoring_card = @result.scoring_card 
     @coach = coach
 
-    mail to: @player.email, subject: "game score changed"
+    mail to: @player.email, subject: "BadrHR, Game Score Changed"
   end
 end
