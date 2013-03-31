@@ -1,6 +1,7 @@
 .alert.alert-info.scoring_cards_fields
   .right
-    .remove-link= f.link_to_remove image_tag "remove.png"
+    - if f.object.destroyable?
+      .remove-link= f.link_to_remove image_tag "remove.png"
     .active
       = f.check_box :active
       = f.label :active

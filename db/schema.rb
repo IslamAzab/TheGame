@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(:version => 20130327091958) do
   create_table "results", :force => true do |t|
     t.integer  "user_id"
     t.integer  "scoring_card_id"
-    t.integer  "score",                          :default => 0
+    t.integer  "score",           :default => 0
     t.date     "date"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.string   "comment",         :limit => nil
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "comment"
   end
 
   create_table "scoring_cards", :force => true do |t|

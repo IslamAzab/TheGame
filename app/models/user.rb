@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :login, :username, :first_name, :last_name, :title
   attr_accessible :top_score_date
-  attr_accessible :avatar
+  attr_accessible :avatar, :scoring_cards_attributes
   has_attached_file :avatar,:styles =>{ :medium => "300x300>", :thumb => "32x32>" },
   :default_url => "/images/:style/missing_user_avatar.jpg"
 

@@ -20,10 +20,17 @@ class ScoringCard < ActiveRecord::Base
 
   scope :active_cards, where(:active => true)
   scope :inactive_cards, where(:active => false)
+  
+  def destroyable?
+    self.results.empty?
+  end
+  
+  protected
+  
 
   def ensure_not_played
-    if self.results.any?
-      self.errors.add(:base, "Cannot delete #{self.title}, #{self.user.full_name} already played with this card.")
+    unless self.destroyable?
+      self.user.errors.add(:base, "Cannot delete #{self.title}, #{self.user.full_name} already played with this card.")
       false
     end
   end
