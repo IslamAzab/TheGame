@@ -11,7 +11,9 @@ class ScoringCard < ActiveRecord::Base
   attr_accessible :active, :score, :title, :avatar, :description
 
   has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "50x50>" },
-   :default_url => "/system/sc/missing_:style_card.jpg"
+   :default_url => "/system/sc/missing_:style_card.jpg",
+   :path => ":rails_root/public/system/sc/:style/:id_partition/:filename",
+   :url => "/system/sc/:style/:id_partition/:filename"
 
   # Validation
   validates :score, :presence => true, :numericality => true
