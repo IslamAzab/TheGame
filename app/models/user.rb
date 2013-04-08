@@ -14,10 +14,12 @@ class User < ActiveRecord::Base
   attr_accessible :top_score_date
   attr_accessible :avatar, :scoring_cards_attributes
   has_attached_file :avatar,:styles =>{ :medium => "300x300>", :thumb => "32x32>" },
-  :default_url => "/images/:style/missing_user_avatar.jpg"
+  :default_url => "/system/user/missing_:style_user.jpg"
 
   # Validation
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
+  validates_attachment_content_type :avatar,
+   content_type: /image/, message: "must be an image"
 
   # Coach has many players
   belongs_to :coach, :class_name => "User"

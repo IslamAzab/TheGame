@@ -11,11 +11,13 @@ class ScoringCard < ActiveRecord::Base
   attr_accessible :active, :score, :title, :avatar, :description
 
   has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "50x50>" },
-   :default_url => "/images/:style/missing_card.jpg"
+   :default_url => "/system/sc/missing_:style_card.jpg"
 
   # Validation
   validates :score, :presence => true, :numericality => true
   validates :title, :presence => true
+  validates_attachment_content_type :avatar,
+   content_type: /image/, message: "must be an image"
 
 
   scope :active_cards, where(:active => true)
