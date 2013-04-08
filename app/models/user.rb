@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :top_score_date
   attr_accessible :avatar, :scoring_cards_attributes
   has_attached_file :avatar,:styles =>{ :medium => "300x300>", :thumb => "32x32>" },
-  :default_url => "/system/user/missing_:style_user.jpg",
+  :default_url => "/missing_:style_user.jpg",
   :path => ":rails_root/public/system/user/:style/:id_partition/:filename",
    :url => "/system/user/:style/:id_partition/:filename"
 
