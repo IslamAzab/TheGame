@@ -31,3 +31,4 @@ gem 'remotipart', '~> 1.0'
 
 gem 'execjs'
 gem 'therubyracer'
+gem 'irbtools'
